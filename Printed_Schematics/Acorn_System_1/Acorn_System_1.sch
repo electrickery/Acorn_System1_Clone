@@ -1,0 +1,2884 @@
+EESchema Schematic File Version 4
+EELAYER 26 0
+EELAYER END
+$Descr A3 16535 11693
+encoding utf-8
+Sheet 1 1
+Title "Acorn System 1 Revival"
+Date "2019-01-14"
+Rev "0.0"
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Acorn_System_1:2114_System_1 U4
+U 1 1 5C3CA9A9
+P 6825 5400
+F 0 "U4" H 7125 4950 39  0000 C CNN
+F 1 "2114" H 7125 4875 39  0000 C CNN
+F 2 "Acorn_System_1:DIP-18_W7.62mm_Socket_LongPads_AJP" H 6825 5400 50  0001 C CNN
+F 3 "" H 6825 5400 50  0001 C CNN
+	1    6825 5400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Acorn_System_1:2114_System_1 U3
+U 1 1 5C3CAA65
+P 6825 3500
+F 0 "U3" H 7125 2975 39  0000 C CNN
+F 1 "2114" H 7125 2900 39  0000 C CNN
+F 2 "Acorn_System_1:DIP-18_W7.62mm_Socket_LongPads_AJP" H 6825 3500 50  0001 C CNN
+F 3 "" H 6825 3500 50  0001 C CNN
+	1    6825 3500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6725 3600 6575 3600
+Text Label 6575 3700 0    39   ~ 0
+A09
+Text Label 6575 4100 0    39   ~ 0
+A08
+Text Label 6575 3600 0    39   ~ 0
+A07
+Text Label 6575 4500 0    39   ~ 0
+A06
+Text Label 6575 4400 0    39   ~ 0
+A05
+Text Label 6575 4300 0    39   ~ 0
+A04
+Text Label 6575 4200 0    39   ~ 0
+A03
+Text Label 6575 4000 0    39   ~ 0
+A02
+Text Label 6575 3800 0    39   ~ 0
+A01
+Text Label 6575 3900 0    39   ~ 0
+A00
+Wire Wire Line
+	6575 3700 6725 3700
+Wire Wire Line
+	6725 3800 6575 3800
+Wire Wire Line
+	6575 3900 6725 3900
+Wire Wire Line
+	6725 4000 6575 4000
+Wire Wire Line
+	6575 4100 6725 4100
+Wire Wire Line
+	6575 4200 6725 4200
+Wire Wire Line
+	6725 4300 6575 4300
+Wire Wire Line
+	6575 4400 6725 4400
+Wire Wire Line
+	6725 4500 6575 4500
+Entry Wire Line
+	6475 3700 6575 3600
+Entry Wire Line
+	6475 3800 6575 3700
+Entry Wire Line
+	6475 3900 6575 3800
+Entry Wire Line
+	6475 4000 6575 3900
+Entry Wire Line
+	6475 4100 6575 4000
+Entry Wire Line
+	6475 4200 6575 4100
+Entry Wire Line
+	6475 4300 6575 4200
+Entry Wire Line
+	6475 4400 6575 4300
+Entry Wire Line
+	6475 4500 6575 4400
+Entry Wire Line
+	6475 4600 6575 4500
+Wire Wire Line
+	6725 5500 6575 5500
+Text Label 6575 6000 0    39   ~ 0
+A09
+Text Label 6575 5900 0    39   ~ 0
+A08
+Text Label 6575 5800 0    39   ~ 0
+A07
+Text Label 6575 5700 0    39   ~ 0
+A06
+Text Label 6575 5600 0    39   ~ 0
+A05
+Text Label 6575 5500 0    39   ~ 0
+A04
+Text Label 6575 6100 0    39   ~ 0
+A03
+Text Label 6575 6400 0    39   ~ 0
+A02
+Text Label 6575 6300 0    39   ~ 0
+A01
+Text Label 6575 6200 0    39   ~ 0
+A00
+Wire Wire Line
+	6575 5600 6725 5600
+Wire Wire Line
+	6725 5700 6575 5700
+Wire Wire Line
+	6575 5800 6725 5800
+Wire Wire Line
+	6725 5900 6575 5900
+Wire Wire Line
+	6575 6000 6725 6000
+Wire Wire Line
+	6575 6100 6725 6100
+Wire Wire Line
+	6725 6200 6575 6200
+Wire Wire Line
+	6575 6300 6725 6300
+Wire Wire Line
+	6725 6400 6575 6400
+Entry Wire Line
+	6475 5600 6575 5500
+Entry Wire Line
+	6475 5700 6575 5600
+Entry Wire Line
+	6475 5800 6575 5700
+Entry Wire Line
+	6475 5900 6575 5800
+Entry Wire Line
+	6475 6000 6575 5900
+Entry Wire Line
+	6475 6100 6575 6000
+Entry Wire Line
+	6475 6200 6575 6100
+Entry Wire Line
+	6475 6300 6575 6200
+Entry Wire Line
+	6475 6400 6575 6300
+Entry Wire Line
+	6475 6500 6575 6400
+Text Label 7675 6100 2    39   ~ 0
+D00
+Text Label 7675 6200 2    39   ~ 0
+D01
+Text Label 7675 6300 2    39   ~ 0
+D02
+Text Label 7675 6400 2    39   ~ 0
+D03
+Wire Wire Line
+	7675 6100 7525 6100
+Wire Wire Line
+	7525 6200 7675 6200
+Wire Wire Line
+	7675 6300 7525 6300
+Wire Wire Line
+	7525 6400 7675 6400
+Entry Wire Line
+	7775 6200 7675 6100
+Entry Wire Line
+	7775 6300 7675 6200
+Entry Wire Line
+	7775 6400 7675 6300
+Entry Wire Line
+	7775 6500 7675 6400
+$Comp
+L Acorn_System_1:6502 U1
+U 1 1 5C3CC4C6
+P 4775 4700
+F 0 "U1" H 5100 3525 39  0000 C CNN
+F 1 "6502" H 5100 3450 39  0000 C CNN
+F 2 "Acorn_System_1:DIP-40_W15.24mm_Socket_LongPads_AJP" H 4775 4700 39  0001 C CNN
+F 3 "" H 4775 4700 39  0001 C CNN
+	1    4775 4700
+	1    0    0    -1  
+$EndComp
+Text Label 5675 6100 2    39   ~ 0
+D03
+Text Label 5675 6200 2    39   ~ 0
+D02
+Text Label 5675 6300 2    39   ~ 0
+D01
+Text Label 5675 6400 2    39   ~ 0
+D00
+Wire Wire Line
+	5675 6100 5525 6100
+Wire Wire Line
+	5525 6200 5675 6200
+Wire Wire Line
+	5675 6300 5525 6300
+Wire Wire Line
+	5525 6400 5675 6400
+Entry Wire Line
+	5775 6200 5675 6100
+Entry Wire Line
+	5775 6300 5675 6200
+Entry Wire Line
+	5775 6400 5675 6300
+Entry Wire Line
+	5775 6500 5675 6400
+$Comp
+L Acorn_System_1:74S571_ROM_System_1 U6
+U 1 1 5C3D6B8E
+P 8825 5500
+F 0 "U6" H 9150 5150 39  0000 C CNN
+F 1 "74S571" H 9150 5075 39  0000 C CNN
+F 2 "Acorn_System_1:DIP-16_W7.62mm_Socket_LongPads_AJP" H 8825 5500 50  0001 C CNN
+F 3 "" H 8825 5500 50  0001 C CNN
+	1    8825 5500
+	1    0    0    -1  
+$EndComp
+Text Label 8575 5700 0    39   ~ 0
+A07
+Text Label 8575 5800 0    39   ~ 0
+A06
+Text Label 8575 5900 0    39   ~ 0
+A05
+Text Label 8575 6000 0    39   ~ 0
+A04
+Text Label 8575 6100 0    39   ~ 0
+A03
+Text Label 8575 6200 0    39   ~ 0
+A02
+Text Label 8575 6300 0    39   ~ 0
+A01
+Text Label 8575 6400 0    39   ~ 0
+A00
+Wire Wire Line
+	8725 5700 8575 5700
+Wire Wire Line
+	8575 5800 8725 5800
+Wire Wire Line
+	8725 5900 8575 5900
+Wire Wire Line
+	8575 6000 8725 6000
+Wire Wire Line
+	8575 6100 8725 6100
+Wire Wire Line
+	8725 6200 8575 6200
+Wire Wire Line
+	8575 6300 8725 6300
+Wire Wire Line
+	8725 6400 8575 6400
+Entry Wire Line
+	8475 5700 8575 5600
+Entry Wire Line
+	8475 5800 8575 5700
+Entry Wire Line
+	8475 5900 8575 5800
+Entry Wire Line
+	8475 6000 8575 5900
+Entry Wire Line
+	8475 6100 8575 6000
+Entry Wire Line
+	8475 6200 8575 6100
+Entry Wire Line
+	8475 6300 8575 6200
+Entry Wire Line
+	8475 6400 8575 6300
+Entry Wire Line
+	8475 6500 8575 6400
+Text Label 9675 6100 2    39   ~ 0
+D03
+Text Label 9675 6200 2    39   ~ 0
+D02
+Text Label 9675 6300 2    39   ~ 0
+D01
+Text Label 9675 6400 2    39   ~ 0
+D00
+Wire Wire Line
+	9675 6100 9525 6100
+Wire Wire Line
+	9525 6200 9675 6200
+Wire Wire Line
+	9675 6300 9525 6300
+Wire Wire Line
+	9525 6400 9675 6400
+Entry Wire Line
+	9775 6200 9675 6100
+Entry Wire Line
+	9775 6300 9675 6200
+Entry Wire Line
+	9775 6400 9675 6300
+Entry Wire Line
+	9775 6500 9675 6400
+$Comp
+L Acorn_System_1:74S571_ROM_System_1 U5
+U 1 1 5C3DAE8C
+P 8825 3600
+F 0 "U5" H 9150 3250 39  0000 C CNN
+F 1 "74S571" H 9150 3175 39  0000 C CNN
+F 2 "Acorn_System_1:DIP-16_W7.62mm_Socket_LongPads_AJP" H 8825 3600 50  0001 C CNN
+F 3 "" H 8825 3600 50  0001 C CNN
+	1    8825 3600
+	1    0    0    -1  
+$EndComp
+Text Label 8575 3800 0    39   ~ 0
+A07
+Text Label 8575 3900 0    39   ~ 0
+A06
+Text Label 8575 4000 0    39   ~ 0
+A05
+Text Label 8575 4100 0    39   ~ 0
+A04
+Text Label 8575 4200 0    39   ~ 0
+A03
+Text Label 8575 4300 0    39   ~ 0
+A02
+Text Label 8575 4400 0    39   ~ 0
+A01
+Text Label 8575 4500 0    39   ~ 0
+A00
+Wire Wire Line
+	8725 3800 8575 3800
+Wire Wire Line
+	8575 3900 8725 3900
+Wire Wire Line
+	8725 4000 8575 4000
+Wire Wire Line
+	8575 4100 8725 4100
+Wire Wire Line
+	8575 4200 8725 4200
+Wire Wire Line
+	8725 4300 8575 4300
+Wire Wire Line
+	8575 4400 8725 4400
+Wire Wire Line
+	8725 4500 8575 4500
+Entry Wire Line
+	8475 3800 8575 3700
+Entry Wire Line
+	8475 3900 8575 3800
+Entry Wire Line
+	8475 4000 8575 3900
+Entry Wire Line
+	8475 4100 8575 4000
+Entry Wire Line
+	8475 4200 8575 4100
+Entry Wire Line
+	8475 4300 8575 4200
+Entry Wire Line
+	8475 4400 8575 4300
+Entry Wire Line
+	8475 4500 8575 4400
+Entry Wire Line
+	8475 4600 8575 4500
+Text Label 9675 4200 2    39   ~ 0
+D07
+Text Label 9675 4300 2    39   ~ 0
+D06
+Text Label 9675 4400 2    39   ~ 0
+D05
+Text Label 9675 4500 2    39   ~ 0
+D04
+Wire Wire Line
+	9675 4200 9525 4200
+Wire Wire Line
+	9525 4300 9675 4300
+Wire Wire Line
+	9675 4400 9525 4400
+Wire Wire Line
+	9525 4500 9675 4500
+Entry Wire Line
+	9775 4300 9675 4200
+Entry Wire Line
+	9775 4400 9675 4300
+Entry Wire Line
+	9775 4500 9675 4400
+Entry Wire Line
+	9775 4600 9675 4500
+Text Label 8575 5600 0    39   ~ 0
+A08
+Wire Wire Line
+	8725 5600 8575 5600
+Text Label 8575 3700 0    39   ~ 0
+A08
+Wire Wire Line
+	8725 3700 8575 3700
+$Comp
+L Acorn_System_1:2516_System_1 U7
+U 1 1 5C3E8868
+P 10825 5300
+F 0 "U7" H 11125 4850 39  0000 C CNN
+F 1 "2516" H 11125 4775 39  0000 C CNN
+F 2 "Acorn_System_1:DIP-24_W15.24mm_Socket_LongPads_AJP" H 10825 5300 50  0001 C CNN
+F 3 "" H 10825 5300 50  0001 C CNN
+	1    10825 5300
+	1    0    0    -1  
+$EndComp
+Text Label 10575 5700 0    39   ~ 0
+A07
+Text Label 10575 5800 0    39   ~ 0
+A06
+Text Label 10575 5900 0    39   ~ 0
+A05
+Text Label 10575 6000 0    39   ~ 0
+A04
+Text Label 10575 6100 0    39   ~ 0
+A03
+Text Label 10575 6200 0    39   ~ 0
+A02
+Text Label 10575 6300 0    39   ~ 0
+A01
+Text Label 10575 6400 0    39   ~ 0
+A00
+Wire Wire Line
+	10725 5700 10575 5700
+Wire Wire Line
+	10575 5800 10725 5800
+Wire Wire Line
+	10725 5900 10575 5900
+Wire Wire Line
+	10575 6000 10725 6000
+Wire Wire Line
+	10575 6100 10725 6100
+Wire Wire Line
+	10725 6200 10575 6200
+Wire Wire Line
+	10575 6300 10725 6300
+Wire Wire Line
+	10725 6400 10575 6400
+Entry Wire Line
+	10475 5700 10575 5600
+Entry Wire Line
+	10475 5800 10575 5700
+Entry Wire Line
+	10475 5900 10575 5800
+Entry Wire Line
+	10475 6000 10575 5900
+Entry Wire Line
+	10475 6100 10575 6000
+Entry Wire Line
+	10475 6200 10575 6100
+Entry Wire Line
+	10475 6300 10575 6200
+Entry Wire Line
+	10475 6400 10575 6300
+Entry Wire Line
+	10475 6500 10575 6400
+Text Label 10575 5600 0    39   ~ 0
+A08
+Wire Wire Line
+	10725 5600 10575 5600
+Text Label 11675 6100 2    39   ~ 0
+D03
+Text Label 11675 6200 2    39   ~ 0
+D02
+Text Label 11675 6300 2    39   ~ 0
+D01
+Text Label 11675 6400 2    39   ~ 0
+D00
+Wire Wire Line
+	11675 6100 11525 6100
+Wire Wire Line
+	11525 6200 11675 6200
+Wire Wire Line
+	11675 6300 11525 6300
+Wire Wire Line
+	11525 6400 11675 6400
+Entry Wire Line
+	11775 6200 11675 6100
+Entry Wire Line
+	11775 6300 11675 6200
+Entry Wire Line
+	11775 6400 11675 6300
+Entry Wire Line
+	11775 6500 11675 6400
+Text Label 11675 5700 2    39   ~ 0
+D07
+Text Label 11675 5800 2    39   ~ 0
+D06
+Text Label 11675 5900 2    39   ~ 0
+D05
+Text Label 11675 6000 2    39   ~ 0
+D04
+Wire Wire Line
+	11675 5700 11525 5700
+Wire Wire Line
+	11525 5800 11675 5800
+Wire Wire Line
+	11675 5900 11525 5900
+Wire Wire Line
+	11525 6000 11675 6000
+Entry Wire Line
+	11775 5800 11675 5700
+Entry Wire Line
+	11775 5900 11675 5800
+Entry Wire Line
+	11775 6000 11675 5900
+Entry Wire Line
+	11775 6100 11675 6000
+Text Label 10575 5500 0    39   ~ 0
+A09
+Wire Wire Line
+	10725 5500 10575 5500
+Entry Wire Line
+	10475 5500 10575 5400
+Entry Wire Line
+	10475 5600 10575 5500
+Text Label 10575 5400 0    39   ~ 0
+A10
+Wire Wire Line
+	10725 5400 10575 5400
+Text Label 12575 6000 0    39   ~ 0
+A04
+Text Label 12575 6100 0    39   ~ 0
+A03
+Text Label 12575 6200 0    39   ~ 0
+A02
+Text Label 12575 6300 0    39   ~ 0
+A01
+Text Label 12575 6400 0    39   ~ 0
+A00
+Wire Wire Line
+	12575 6000 12725 6000
+Wire Wire Line
+	12575 6100 12725 6100
+Wire Wire Line
+	12725 6200 12575 6200
+Wire Wire Line
+	12575 6300 12725 6300
+Wire Wire Line
+	12725 6400 12575 6400
+Entry Wire Line
+	12475 6100 12575 6000
+Entry Wire Line
+	12475 6200 12575 6100
+Entry Wire Line
+	12475 6300 12575 6200
+Entry Wire Line
+	12475 6400 12575 6300
+Entry Wire Line
+	12475 6500 12575 6400
+Text Label 12575 5900 0    39   ~ 0
+A05
+Wire Wire Line
+	12725 5900 12575 5900
+Entry Wire Line
+	12475 5900 12575 5800
+Entry Wire Line
+	12475 6000 12575 5900
+Text Label 12575 5800 0    39   ~ 0
+A06
+Wire Wire Line
+	12725 5800 12575 5800
+Wire Wire Line
+	13700 4300 13700 4200
+Wire Wire Line
+	13700 4200 12500 4200
+Wire Wire Line
+	12500 4200 12500 4600
+Wire Wire Line
+	12500 4600 12725 4600
+Wire Wire Line
+	13775 4200 13775 4100
+Wire Wire Line
+	13775 4100 12425 4100
+Wire Wire Line
+	12425 4100 12425 4700
+Wire Wire Line
+	12425 4700 12725 4700
+Wire Wire Line
+	13850 4100 13850 4000
+Wire Wire Line
+	13850 4000 12350 4000
+Wire Wire Line
+	12350 4000 12350 4800
+Wire Wire Line
+	12350 4800 12725 4800
+Wire Wire Line
+	12725 4900 12275 4900
+Wire Wire Line
+	12275 4900 12275 3900
+Wire Wire Line
+	12275 3900 13925 3900
+Wire Wire Line
+	13925 3900 13925 4000
+Wire Wire Line
+	12725 5100 12200 5100
+Wire Wire Line
+	12725 5200 12150 5200
+Wire Wire Line
+	12725 5300 12100 5300
+Wire Wire Line
+	12725 5400 12050 5400
+Wire Wire Line
+	12725 5500 12000 5500
+Text Label 13725 6100 2    39   ~ 0
+D03
+Text Label 13725 6200 2    39   ~ 0
+D02
+Text Label 13725 6300 2    39   ~ 0
+D01
+Text Label 13725 6400 2    39   ~ 0
+D00
+Wire Wire Line
+	13725 6100 13575 6100
+Wire Wire Line
+	13575 6200 13725 6200
+Wire Wire Line
+	13725 6300 13575 6300
+Wire Wire Line
+	13575 6400 13725 6400
+Entry Wire Line
+	13825 6200 13725 6100
+Entry Wire Line
+	13825 6300 13725 6200
+Entry Wire Line
+	13825 6400 13725 6300
+Entry Wire Line
+	13825 6500 13725 6400
+Text Label 13725 5700 2    39   ~ 0
+D07
+Text Label 13725 5800 2    39   ~ 0
+D06
+Text Label 13725 5900 2    39   ~ 0
+D05
+Text Label 13725 6000 2    39   ~ 0
+D04
+Wire Wire Line
+	13725 5700 13575 5700
+Wire Wire Line
+	13575 5800 13725 5800
+Wire Wire Line
+	13725 5900 13575 5900
+Wire Wire Line
+	13575 6000 13725 6000
+Entry Wire Line
+	13825 5800 13725 5700
+Entry Wire Line
+	13825 5900 13725 5800
+Entry Wire Line
+	13825 6000 13725 5900
+Entry Wire Line
+	13825 6100 13725 6000
+Text Label 14400 8450 0    47   ~ 0
+D00
+Wire Wire Line
+	14400 8450 14575 8450
+Entry Wire Line
+	14300 8350 14400 8450
+Text Label 14400 8350 0    47   ~ 0
+D01
+Wire Wire Line
+	14400 8350 14575 8350
+Entry Wire Line
+	14300 8250 14400 8350
+Text Label 14400 8250 0    47   ~ 0
+D02
+Wire Wire Line
+	14400 8250 14575 8250
+Entry Wire Line
+	14300 8150 14400 8250
+Text Label 14400 8150 0    47   ~ 0
+D03
+Wire Wire Line
+	14400 8150 14575 8150
+Entry Wire Line
+	14300 8050 14400 8150
+Text Label 14400 8050 0    47   ~ 0
+D04
+Wire Wire Line
+	14400 8050 14575 8050
+Text Label 14400 7950 0    47   ~ 0
+D05
+Wire Wire Line
+	14400 7950 14575 7950
+Text Label 14400 7850 0    47   ~ 0
+D06
+Wire Wire Line
+	14400 7850 14575 7850
+Text Label 14400 7750 0    47   ~ 0
+D07
+Wire Wire Line
+	14400 7750 14575 7750
+Text Label 14075 7650 0    47   ~ 0
+A00
+Wire Wire Line
+	14075 7550 14575 7550
+Text Label 14075 7550 0    47   ~ 0
+A01
+Text Label 14075 7450 0    47   ~ 0
+A02
+Wire Wire Line
+	14075 7350 14575 7350
+Text Label 14075 7350 0    47   ~ 0
+A03
+Wire Wire Line
+	14075 7450 14575 7450
+Text Label 14075 7250 0    47   ~ 0
+A04
+Wire Wire Line
+	14075 7150 14575 7150
+Text Label 14075 7150 0    47   ~ 0
+A05
+Text Label 14075 7050 0    47   ~ 0
+A06
+Wire Wire Line
+	14075 6950 14575 6950
+Text Label 14075 6950 0    47   ~ 0
+A07
+Wire Wire Line
+	14075 7050 14575 7050
+Wire Wire Line
+	14075 7250 14575 7250
+Text Label 14075 6450 0    47   ~ 0
+A14
+Wire Wire Line
+	14075 6350 14575 6350
+Text Label 14075 6350 0    47   ~ 0
+A15
+Wire Wire Line
+	14075 6450 14575 6450
+Entry Wire Line
+	13975 6450 14075 6350
+Entry Wire Line
+	13975 6550 14075 6450
+Entry Wire Line
+	13975 7050 14075 6950
+Entry Wire Line
+	13975 7150 14075 7050
+Entry Wire Line
+	13975 7250 14075 7150
+Entry Wire Line
+	13975 7350 14075 7250
+Entry Wire Line
+	13975 7450 14075 7350
+Entry Wire Line
+	13975 7550 14075 7450
+Entry Wire Line
+	13975 7650 14075 7550
+Entry Wire Line
+	13975 7750 14075 7650
+Wire Wire Line
+	14575 8550 14075 8550
+Entry Wire Line
+	13975 8450 14075 8550
+Text Label 14075 8550 0    47   ~ 0
+A13
+Wire Wire Line
+	14575 8650 14075 8650
+Entry Wire Line
+	13975 8550 14075 8650
+Text Label 14075 8650 0    47   ~ 0
+A12
+Wire Wire Line
+	14575 8750 14075 8750
+Entry Wire Line
+	13975 8650 14075 8750
+Text Label 14075 8750 0    47   ~ 0
+A11
+Wire Wire Line
+	14575 8850 14075 8850
+Entry Wire Line
+	13975 8750 14075 8850
+Text Label 14075 8850 0    47   ~ 0
+A10
+Wire Wire Line
+	14575 8950 14075 8950
+Entry Wire Line
+	13975 8850 14075 8950
+Text Label 14075 8950 0    47   ~ 0
+A09
+Wire Wire Line
+	14075 6850 14575 6850
+Text Label 14075 6850 0    47   ~ 0
+A08
+Entry Wire Line
+	13975 6950 14075 6850
+Wire Bus Line
+	14300 6700 14250 6650
+Entry Bus Bus
+	13725 6650 13825 6550
+Wire Wire Line
+	13925 4000 14575 4000
+Wire Wire Line
+	13850 4100 14575 4100
+Wire Wire Line
+	13775 4200 14575 4200
+Wire Wire Line
+	13700 4300 14575 4300
+Wire Wire Line
+	13575 4500 14575 4500
+Wire Wire Line
+	13575 4600 14575 4600
+Wire Wire Line
+	13575 4700 14575 4700
+Wire Wire Line
+	13575 4800 14575 4800
+Wire Wire Line
+	13575 4900 14575 4900
+Wire Wire Line
+	13575 5000 14575 5000
+Wire Wire Line
+	13575 5100 14575 5100
+Wire Wire Line
+	13575 5200 14575 5200
+Wire Wire Line
+	13575 5300 14575 5300
+Wire Wire Line
+	13575 5400 14575 5400
+Wire Wire Line
+	13575 5500 14575 5500
+$Comp
+L power:GND #PWR0101
+U 1 1 5C73CD38
+P 11750 5600
+F 0 "#PWR0101" H 11750 5350 50  0001 C CNN
+F 1 "GND" V 11750 5475 47  0000 R CNN
+F 2 "" H 11750 5600 50  0001 C CNN
+F 3 "" H 11750 5600 50  0001 C CNN
+	1    11750 5600
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	11750 5600 11525 5600
+$Comp
+L power:+5V #PWR0102
+U 1 1 5C74FD4E
+P 14525 6200
+F 0 "#PWR0102" H 14525 6050 50  0001 C CNN
+F 1 "+5V" H 14540 6373 50  0000 C CNN
+F 2 "" H 14525 6200 50  0001 C CNN
+F 3 "" H 14525 6200 50  0001 C CNN
+	1    14525 6200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	14575 6250 14525 6250
+Wire Wire Line
+	14525 6250 14525 6200
+Wire Wire Line
+	14575 6650 14300 6650
+Wire Wire Line
+	14575 6550 14350 6550
+Wire Wire Line
+	14350 3800 14350 6550
+Wire Wire Line
+	12000 3800 12000 5500
+Wire Wire Line
+	12000 3800 14350 3800
+Wire Wire Line
+	14300 3750 12050 3750
+Wire Wire Line
+	12050 3750 12050 5400
+Wire Wire Line
+	14300 3750 14300 6650
+Wire Wire Line
+	14575 3900 14400 3900
+Wire Wire Line
+	14400 3900 14400 3700
+Wire Wire Line
+	14400 3700 11675 3700
+Wire Wire Line
+	11675 3700 11675 5200
+Wire Wire Line
+	11675 5500 11525 5500
+$Comp
+L Device:Jumper_NC_Small JP1
+U 1 1 5C81665A
+P 11775 4950
+F 0 "JP1" H 11725 5050 47  0000 L CNN
+F 1 "Jumper_NC_Small" V 11820 5024 47  0001 L CNN
+F 2 "Acorn_System_1:PinSocket_1x02_P2.54mm_Vertical_AJP" H 11775 4950 50  0001 C CNN
+F 3 "~" H 11775 4950 50  0001 C CNN
+	1    11775 4950
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	11775 5050 11775 5200
+Wire Wire Line
+	11775 5200 11675 5200
+Connection ~ 11675 5200
+Wire Wire Line
+	11675 5200 11675 5500
+$Comp
+L power:+5V #PWR0103
+U 1 1 5C82C2AA
+P 11775 4775
+F 0 "#PWR0103" H 11775 4625 50  0001 C CNN
+F 1 "+5V" H 11790 4948 50  0000 C CNN
+F 2 "" H 11775 4775 50  0001 C CNN
+F 3 "" H 11775 4775 50  0001 C CNN
+	1    11775 4775
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	11775 4775 11775 4850
+$Comp
+L Acorn_System_1:8154_System_1_U8 U8
+U 1 1 5C86EDE6
+P 12825 4400
+F 0 "U8" H 13150 2975 39  0000 C CNN
+F 1 "8154" H 13150 2900 39  0000 C CNN
+F 2 "Acorn_System_1:DIP-40_W15.24mm_Socket_LongPads_AJP" H 12825 4400 39  0001 C CNN
+F 3 "" H 12825 4400 39  0001 C CNN
+	1    12825 4400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	13625 4400 14575 4400
+Wire Wire Line
+	12575 4500 12725 4500
+Wire Wire Line
+	12575 4300 12575 4500
+Wire Wire Line
+	13625 4400 13625 4300
+Entry Bus Bus
+	13875 6850 13975 6950
+Entry Wire Line
+	14300 7950 14400 8050
+Entry Wire Line
+	14300 7850 14400 7950
+Entry Wire Line
+	14300 7750 14400 7850
+Entry Wire Line
+	14300 7650 14400 7750
+Entry Bus Bus
+	12375 6850 12475 6750
+Entry Bus Bus
+	10375 6850 10475 6750
+Entry Bus Bus
+	11675 6650 11775 6550
+Entry Bus Bus
+	9675 6650 9775 6550
+Entry Bus Bus
+	7675 6650 7775 6550
+Text Label 7675 4200 2    39   ~ 0
+D04
+Text Label 7675 4300 2    39   ~ 0
+D05
+Text Label 7675 4400 2    39   ~ 0
+D06
+Text Label 7675 4500 2    39   ~ 0
+D07
+Wire Wire Line
+	7675 4200 7525 4200
+Wire Wire Line
+	7525 4300 7675 4300
+Wire Wire Line
+	7675 4400 7525 4400
+Wire Wire Line
+	7525 4500 7675 4500
+Entry Wire Line
+	7775 4300 7675 4200
+Entry Wire Line
+	7775 4400 7675 4300
+Entry Wire Line
+	7775 4500 7675 4400
+Entry Wire Line
+	7775 4600 7675 4500
+Entry Bus Bus
+	8475 6750 8575 6850
+Wire Wire Line
+	4675 5500 4525 5500
+Text Label 4525 5500 0    39   ~ 0
+A09
+Text Label 4525 5600 0    39   ~ 0
+A08
+Text Label 4525 5700 0    39   ~ 0
+A07
+Text Label 4525 5800 0    39   ~ 0
+A06
+Text Label 4525 5900 0    39   ~ 0
+A05
+Text Label 4525 6000 0    39   ~ 0
+A04
+Text Label 4525 6100 0    39   ~ 0
+A03
+Text Label 4525 6200 0    39   ~ 0
+A02
+Text Label 4525 6300 0    39   ~ 0
+A01
+Text Label 4525 6400 0    39   ~ 0
+A00
+Wire Wire Line
+	4525 5600 4675 5600
+Wire Wire Line
+	4675 5700 4525 5700
+Wire Wire Line
+	4525 5800 4675 5800
+Wire Wire Line
+	4675 5900 4525 5900
+Wire Wire Line
+	4525 6000 4675 6000
+Wire Wire Line
+	4525 6100 4675 6100
+Wire Wire Line
+	4675 6200 4525 6200
+Wire Wire Line
+	4525 6300 4675 6300
+Wire Wire Line
+	4675 6400 4525 6400
+Entry Wire Line
+	4425 5600 4525 5500
+Entry Wire Line
+	4425 5700 4525 5600
+Entry Wire Line
+	4425 5800 4525 5700
+Entry Wire Line
+	4425 5900 4525 5800
+Entry Wire Line
+	4425 6000 4525 5900
+Entry Wire Line
+	4425 6100 4525 6000
+Entry Wire Line
+	4425 6200 4525 6100
+Entry Wire Line
+	4425 6300 4525 6200
+Entry Wire Line
+	4425 6400 4525 6300
+Entry Wire Line
+	4425 6500 4525 6400
+$Comp
+L Acorn_System_1:8154_System_1_U2 U2
+U 1 1 5CA076B4
+P 2725 4400
+F 0 "U2" H 3050 3075 39  0000 C CNN
+F 1 "8154" H 3050 3000 39  0000 C CNN
+F 2 "Acorn_System_1:DIP-40_W15.24mm_Socket_LongPads_AJP" H 2725 4400 39  0001 C CNN
+F 3 "" H 2725 4400 39  0001 C CNN
+	1    2725 4400
+	1    0    0    -1  
+$EndComp
+Text Label 3625 6100 2    39   ~ 0
+D03
+Text Label 3625 6200 2    39   ~ 0
+D02
+Text Label 3625 6300 2    39   ~ 0
+D01
+Text Label 3625 6400 2    39   ~ 0
+D00
+Wire Wire Line
+	3625 6100 3475 6100
+Wire Wire Line
+	3475 6200 3625 6200
+Wire Wire Line
+	3625 6300 3475 6300
+Wire Wire Line
+	3475 6400 3625 6400
+Entry Wire Line
+	3725 6200 3625 6100
+Entry Wire Line
+	3725 6300 3625 6200
+Entry Wire Line
+	3725 6400 3625 6300
+Entry Wire Line
+	3725 6500 3625 6400
+Text Label 3625 5700 2    39   ~ 0
+D07
+Text Label 3625 5800 2    39   ~ 0
+D06
+Text Label 3625 5900 2    39   ~ 0
+D05
+Text Label 3625 6000 2    39   ~ 0
+D04
+Wire Wire Line
+	3625 5700 3475 5700
+Wire Wire Line
+	3475 5800 3625 5800
+Wire Wire Line
+	3625 5900 3475 5900
+Wire Wire Line
+	3475 6000 3625 6000
+Entry Wire Line
+	3725 5800 3625 5700
+Entry Wire Line
+	3725 5900 3625 5800
+Entry Wire Line
+	3725 6000 3625 5900
+Entry Wire Line
+	3725 6100 3625 6000
+Text Label 2475 5800 0    39   ~ 0
+A06
+Text Label 2475 5900 0    39   ~ 0
+A05
+Text Label 2475 6000 0    39   ~ 0
+A04
+Text Label 2475 6100 0    39   ~ 0
+A03
+Text Label 2475 6200 0    39   ~ 0
+A02
+Text Label 2475 6300 0    39   ~ 0
+A01
+Text Label 2475 6400 0    39   ~ 0
+A00
+Wire Wire Line
+	2475 5800 2625 5800
+Wire Wire Line
+	2625 5900 2475 5900
+Wire Wire Line
+	2475 6000 2625 6000
+Wire Wire Line
+	2475 6100 2625 6100
+Wire Wire Line
+	2625 6200 2475 6200
+Wire Wire Line
+	2475 6300 2625 6300
+Wire Wire Line
+	2625 6400 2475 6400
+Entry Wire Line
+	2375 5900 2475 5800
+Entry Wire Line
+	2375 6000 2475 5900
+Entry Wire Line
+	2375 6100 2475 6000
+Entry Wire Line
+	2375 6200 2475 6100
+Entry Wire Line
+	2375 6300 2475 6200
+Entry Wire Line
+	2375 6400 2475 6300
+Entry Wire Line
+	2375 6500 2475 6400
+Entry Bus Bus
+	5675 6650 5775 6550
+Text Label 5675 5700 2    39   ~ 0
+D07
+Text Label 5675 5800 2    39   ~ 0
+D06
+Text Label 5675 5900 2    39   ~ 0
+D05
+Text Label 5675 6000 2    39   ~ 0
+D04
+Wire Wire Line
+	5675 5700 5525 5700
+Wire Wire Line
+	5525 5800 5675 5800
+Wire Wire Line
+	5675 5900 5525 5900
+Wire Wire Line
+	5525 6000 5675 6000
+Entry Wire Line
+	5775 5800 5675 5700
+Entry Wire Line
+	5775 5900 5675 5800
+Entry Wire Line
+	5775 6000 5675 5900
+Entry Wire Line
+	5775 6100 5675 6000
+Entry Bus Bus
+	3725 6550 3825 6650
+Entry Bus Bus
+	6475 6750 6575 6850
+Entry Bus Bus
+	4425 6750 4525 6850
+$Comp
+L Acorn_System_1:74LS20_System_1 U9
+U 2 1 5CBC3451
+P 5775 2100
+F 0 "U9" H 5750 2100 47  0000 C CNN
+F 1 "74LS20" H 5750 1875 47  0000 C CNN
+F 2 "Acorn_System_1:DIP-14_W7.62mm_Socket_LongPads_AJP" H 5775 2100 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS20" H 5775 2100 50  0001 C CNN
+	2    5775 2100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Acorn_System_1:74LS04_System_1 U11
+U 1 1 5CBC3BFE
+P 4975 2275
+F 0 "U11" H 4925 2275 47  0000 C CNN
+F 1 "74LS04" H 5175 2175 47  0001 C CNN
+F 2 "Acorn_System_1:DIP-14_W7.62mm_Socket_LongPads_AJP" H 4975 2275 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS04" H 4975 2275 50  0001 C CNN
+	1    4975 2275
+	1    0    0    -1  
+$EndComp
+$Comp
+L Acorn_System_1:74LS04_System_1 U11
+U 6 1 5CBC3D72
+P 4975 2625
+F 0 "U11" H 4925 2625 47  0000 C CNN
+F 1 "74LS04" H 5175 2525 47  0001 C CNN
+F 2 "Acorn_System_1:DIP-14_W7.62mm_Socket_LongPads_AJP" H 4975 2625 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS04" H 4975 2625 50  0001 C CNN
+	6    4975 2625
+	1    0    0    -1  
+$EndComp
+$Comp
+L Acorn_System_1:74LS04_System_1 U11
+U 2 1 5CBD9D32
+P 4975 1925
+F 0 "U11" H 4925 1925 47  0000 C CNN
+F 1 "74LS04" H 5175 1825 47  0001 C CNN
+F 2 "Acorn_System_1:DIP-14_W7.62mm_Socket_LongPads_AJP" H 4975 1925 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS04" H 4975 1925 50  0001 C CNN
+	2    4975 1925
+	1    0    0    -1  
+$EndComp
+$Comp
+L Acorn_System_1:74LS04_System_1 U11
+U 3 1 5CBEFA65
+P 4975 1575
+F 0 "U11" H 4925 1575 47  0000 C CNN
+F 1 "74LS04" H 5175 1475 47  0001 C CNN
+F 2 "Acorn_System_1:DIP-14_W7.62mm_Socket_LongPads_AJP" H 4975 1575 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS04" H 4975 1575 50  0001 C CNN
+	3    4975 1575
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4675 2625 4525 2625
+Text Label 4525 2275 0    39   ~ 0
+A12
+Entry Wire Line
+	4425 2725 4525 2625
+Wire Wire Line
+	4675 2275 4525 2275
+Text Label 4525 2625 0    39   ~ 0
+A13
+Entry Wire Line
+	4425 2375 4525 2275
+Wire Wire Line
+	4675 1925 4525 1925
+Text Label 4525 1925 0    39   ~ 0
+A14
+Entry Wire Line
+	4425 2025 4525 1925
+Wire Wire Line
+	4675 1575 4525 1575
+Text Label 4525 1575 0    39   ~ 0
+A15
+Entry Wire Line
+	4425 1675 4525 1575
+Wire Wire Line
+	5475 1950 5400 1950
+Wire Wire Line
+	5400 1950 5400 1575
+Wire Wire Line
+	5400 1575 5275 1575
+Wire Wire Line
+	5475 2250 5400 2250
+Wire Wire Line
+	5400 2250 5400 2625
+Wire Wire Line
+	5400 2625 5275 2625
+Wire Wire Line
+	5475 2150 5350 2150
+Wire Wire Line
+	5350 2275 5275 2275
+Wire Wire Line
+	5350 2050 5350 1925
+Wire Wire Line
+	5350 1925 5275 1925
+Wire Wire Line
+	5350 2050 5475 2050
+$Comp
+L Acorn_System_1:74LS139_System_1 U10
+U 1 1 5CD3238A
+P 6775 1250
+F 0 "U10" H 6575 900 50  0000 C CNN
+F 1 "74LS139" H 6725 1150 50  0000 C CNN
+F 2 "Acorn_System_1:DIP-16_W7.62mm_Socket_LongPads_AJP" H 6775 1250 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS139" H 6775 1250 50  0001 C CNN
+	1    6775 1250
+	1    0    0    1   
+$EndComp
+$Comp
+L Acorn_System_1:74LS139_System_1 U10
+U 2 1 5CD4BA06
+P 6775 2300
+F 0 "U10" H 6575 1950 50  0000 C CNN
+F 1 "74LS139" H 6725 2200 50  0000 C CNN
+F 2 "Acorn_System_1:DIP-16_W7.62mm_Socket_LongPads_AJP" H 6775 2300 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS139" H 6775 2300 50  0001 C CNN
+	2    6775 2300
+	1    0    0    1   
+$EndComp
+Text Label 4525 2950 0    39   ~ 0
+A11
+Entry Wire Line
+	4425 2950 4525 2850
+Text Label 4525 2850 0    39   ~ 0
+A10
+Entry Wire Line
+	4425 3050 4525 2950
+$Comp
+L Acorn_System_1:74LS20_System_1 U9
+U 1 1 5CDCBBDE
+P 5800 1050
+F 0 "U9" H 5775 1050 47  0000 C CNN
+F 1 "74LS20" H 5775 825 47  0000 C CNN
+F 2 "Acorn_System_1:DIP-14_W7.62mm_Socket_LongPads_AJP" H 5800 1050 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS20" H 5800 1050 50  0001 C CNN
+	1    5800 1050
+	1    0    0    1   
+$EndComp
+Text Label 4525 1350 0    39   ~ 0
+A11
+Entry Wire Line
+	4425 1450 4525 1350
+Wire Wire Line
+	4525 1350 6275 1350
+$Comp
+L power:+5V #PWR0104
+U 1 1 5CE33F00
+P 6250 1250
+F 0 "#PWR0104" H 6250 1100 50  0001 C CNN
+F 1 "+5V" V 6265 1378 50  0000 L CNN
+F 2 "" H 6250 1250 50  0001 C CNN
+F 3 "" H 6250 1250 50  0001 C CNN
+	1    6250 1250
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6250 1250 6275 1250
+Text Label 4525 1200 0    39   ~ 0
+A12
+Entry Wire Line
+	4425 1300 4525 1200
+Text Label 4525 1100 0    39   ~ 0
+A13
+Entry Wire Line
+	4425 1200 4525 1100
+Text Label 4525 1000 0    39   ~ 0
+A14
+Entry Wire Line
+	4425 1100 4525 1000
+Text Label 4525 900  0    39   ~ 0
+A15
+Entry Wire Line
+	4425 1000 4525 900 
+Wire Wire Line
+	6100 1050 6275 1050
+Wire Wire Line
+	4525 1200 5500 1200
+Wire Wire Line
+	4525 1100 5500 1100
+Wire Wire Line
+	4525 1000 5500 1000
+Wire Wire Line
+	4525 900  5500 900 
+Wire Wire Line
+	6275 2100 6150 2100
+Wire Wire Line
+	4525 2850 5950 2850
+Wire Wire Line
+	5950 2300 5950 2850
+Wire Wire Line
+	5950 2300 6275 2300
+Wire Wire Line
+	6275 2400 6050 2400
+Wire Wire Line
+	6050 2400 6050 2950
+Wire Wire Line
+	4525 2950 6050 2950
+Text Notes 7800 1025 2    47   ~ 0
+~F8xx-FFxx
+Text Notes 7800 1225 2    47   ~ 0
+~F0xx-F7xx
+Entry Bus Bus
+	2375 6750 2475 6850
+$Comp
+L Acorn_System_1:Keyboard_Display_Connector J2
+U 1 1 5D0306C8
+P 850 3700
+F 0 "J2" H 1950 3800 47  0000 R CNN
+F 1 "Keyboard_Display_Connector" V 1475 5275 47  0000 R CNN
+F 2 "Acorn_System_1:PinHeader_1x20_P2.54mm_Vertical_AJP" H 1800 4950 50  0001 C CNN
+F 3 "~" H 1800 4950 50  0001 C CNN
+	1    850  3700
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	3475 4500 3625 4500
+Wire Wire Line
+	2450 4300 2450 4400
+Wire Wire Line
+	2450 4400 2050 4400
+Wire Wire Line
+	3625 4300 3625 4500
+Wire Wire Line
+	3475 4600 3675 4600
+Wire Wire Line
+	3675 4600 3675 4200
+Wire Wire Line
+	3675 4200 2400 4200
+Wire Wire Line
+	2400 4200 2400 4300
+Wire Wire Line
+	2400 4300 2050 4300
+Wire Wire Line
+	3475 4700 3725 4700
+Wire Wire Line
+	3725 4700 3725 4100
+Wire Wire Line
+	3725 4100 2350 4100
+Wire Wire Line
+	2350 4100 2350 4200
+Wire Wire Line
+	2350 4200 2050 4200
+Wire Wire Line
+	3475 4800 3775 4800
+Wire Wire Line
+	3775 4800 3775 4000
+Wire Wire Line
+	3775 4000 2300 4000
+Wire Wire Line
+	2300 4100 2050 4100
+Wire Wire Line
+	2300 4000 2300 4100
+Wire Wire Line
+	3475 4900 3825 4900
+Wire Wire Line
+	3825 4900 3825 3900
+Wire Wire Line
+	3825 3900 2250 3900
+Wire Wire Line
+	2250 3900 2250 4000
+Wire Wire Line
+	2250 4000 2050 4000
+$Comp
+L power:+5V #PWR0105
+U 1 1 5D111491
+P 2100 3850
+F 0 "#PWR0105" H 2100 3700 50  0001 C CNN
+F 1 "+5V" H 2100 4000 47  0000 C CNN
+F 2 "" H 2100 3850 50  0001 C CNN
+F 3 "" H 2100 3850 50  0001 C CNN
+	1    2100 3850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2100 3850 2100 3900
+Wire Wire Line
+	2100 3900 2050 3900
+Wire Wire Line
+	2625 4500 2050 4500
+Wire Wire Line
+	2625 4600 2050 4600
+Wire Wire Line
+	2625 4700 2050 4700
+Wire Wire Line
+	2625 4800 2050 4800
+Wire Wire Line
+	2625 5000 2050 5000
+Wire Wire Line
+	2625 5100 2050 5100
+Wire Wire Line
+	2625 5200 2050 5200
+Wire Wire Line
+	2625 5300 2050 5300
+Wire Wire Line
+	2625 5400 2050 5400
+Wire Wire Line
+	2625 5500 2050 5500
+Wire Wire Line
+	2625 5600 2050 5600
+Wire Wire Line
+	2625 5700 2050 5700
+$Comp
+L power:GND #PWR0106
+U 1 1 5D25C4E8
+P 2100 5850
+F 0 "#PWR0106" H 2100 5600 50  0001 C CNN
+F 1 "GND" H 2100 5700 47  0000 C CNN
+F 2 "" H 2100 5850 50  0001 C CNN
+F 3 "" H 2100 5850 50  0001 C CNN
+	1    2100 5850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2100 5850 2100 5800
+Wire Wire Line
+	2100 5800 2050 5800
+$Comp
+L Device:Crystal Y1
+U 1 1 5D4981B7
+P 5100 4475
+F 0 "Y1" H 4950 4600 47  0000 C CNN
+F 1 "1MHz" H 5100 4325 47  0000 C CNN
+F 2 "Acorn_System_1:Crystal_HC18-U_Horizontal_AJP" H 5100 4475 50  0001 C CNN
+F 3 "~" H 5100 4475 50  0001 C CNN
+	1    5100 4475
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C11
+U 1 1 5D4984CA
+P 5100 4225
+F 0 "C11" V 5000 4075 47  0000 C CNN
+F 1 "Cx" V 5000 4350 47  0000 C CNN
+F 2 "Acorn_System_1:C_Disc_D10.0mm_W2.5mm_P5.00mm_AJP" H 5138 4075 50  0001 C CNN
+F 3 "~" H 5100 4225 50  0001 C CNN
+	1    5100 4225
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R2
+U 1 1 5D4C03D1
+P 5575 4000
+F 0 "R2" H 5645 4044 47  0000 L CNN
+F 1 "4K7" V 5575 3925 47  0000 L CNN
+F 2 "Acorn_System_1:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal_AJP" V 5505 4000 50  0001 C CNN
+F 3 "~" H 5575 4000 50  0001 C CNN
+	1    5575 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Acorn_System_1:74LS04_System_1 U11
+U 5 1 5D4C0597
+P 5100 3775
+F 0 "U11" H 5050 3775 47  0000 C CNN
+F 1 "74LS04" H 5225 3650 50  0001 C CNN
+F 2 "Acorn_System_1:DIP-14_W7.62mm_Socket_LongPads_AJP" H 5100 3775 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS04" H 5100 3775 50  0001 C CNN
+	5    5100 3775
+	1    0    0    -1  
+$EndComp
+$Comp
+L Acorn_System_1:74LS04_System_1 U11
+U 4 1 5D4C064A
+P 5975 3775
+F 0 "U11" H 5925 3775 50  0000 C CNN
+F 1 "74LS04" H 6100 3650 50  0001 C CNN
+F 2 "Acorn_System_1:DIP-14_W7.62mm_Socket_LongPads_AJP" H 5975 3775 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS04" H 5975 3775 50  0001 C CNN
+	4    5975 3775
+	1    0    0    -1  
+$EndComp
+Text Notes 6225 4650 2    47   ~ 0
+*Fit either but\nnot both
+Text Notes 4900 4150 2    47   ~ 0
+*
+Text Notes 4900 4375 2    47   ~ 0
+*
+Wire Wire Line
+	5525 4800 5575 4800
+Wire Wire Line
+	5575 4800 5575 4475
+Wire Wire Line
+	4675 4800 4625 4800
+Wire Wire Line
+	4625 4800 4625 4475
+Wire Wire Line
+	4625 3775 4800 3775
+Wire Wire Line
+	5400 3775 5575 3775
+Wire Wire Line
+	5575 3850 5575 3775
+Connection ~ 5575 3775
+Wire Wire Line
+	5575 3775 5675 3775
+Wire Wire Line
+	6275 3775 6375 3775
+Wire Wire Line
+	5250 4225 5575 4225
+Connection ~ 5575 4225
+Wire Wire Line
+	5575 4225 5575 4150
+Wire Wire Line
+	5250 4475 5575 4475
+Connection ~ 5575 4475
+Wire Wire Line
+	5575 4475 5575 4225
+Wire Wire Line
+	4950 4225 4625 4225
+Connection ~ 4625 4225
+Wire Wire Line
+	4625 4225 4625 3775
+Wire Wire Line
+	4950 4475 4625 4475
+Connection ~ 4625 4475
+Wire Wire Line
+	4625 4475 4625 4225
+NoConn ~ 5525 4900
+Wire Wire Line
+	4675 5100 4525 5100
+Text Label 4525 5100 0    39   ~ 0
+A13
+Text Label 4525 5200 0    39   ~ 0
+A12
+Text Label 4525 5300 0    39   ~ 0
+A11
+Text Label 4525 5400 0    39   ~ 0
+A10
+Wire Wire Line
+	4525 5200 4675 5200
+Wire Wire Line
+	4675 5300 4525 5300
+Wire Wire Line
+	4525 5400 4675 5400
+Entry Wire Line
+	4425 5200 4525 5100
+Entry Wire Line
+	4425 5300 4525 5200
+Entry Wire Line
+	4425 5400 4525 5300
+Entry Wire Line
+	4425 5500 4525 5400
+Wire Wire Line
+	4675 4900 4525 4900
+Text Label 4525 4900 0    39   ~ 0
+A15
+Text Label 4525 5000 0    39   ~ 0
+A14
+Wire Wire Line
+	4525 5000 4675 5000
+Entry Wire Line
+	4425 5000 4525 4900
+Entry Wire Line
+	4425 5100 4525 5000
+$Comp
+L Acorn_System_1:74LS00_System_1 U12
+U 2 2 5D766AAC
+P 8175 2200
+F 0 "U12" H 8175 2200 47  0000 C CNN
+F 1 "74LS00" H 8400 2050 47  0001 C CNN
+F 2 "Acorn_System_1:DIP-14_W7.62mm_Socket_LongPads_AJP" H 8175 2200 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74ls00" H 8175 2200 50  0001 C CNN
+	2    8175 2200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	14575 9050 13850 9050
+Wire Wire Line
+	13850 9050 13850 7075
+Wire Wire Line
+	6375 7075 13850 7075
+Wire Wire Line
+	6375 3775 6375 7075
+Wire Wire Line
+	14575 9150 13750 9150
+Wire Wire Line
+	13750 7175 13750 9150
+Wire Wire Line
+	6275 7175 13750 7175
+Wire Wire Line
+	6275 5500 5525 5500
+Wire Wire Line
+	6275 5500 6275 7175
+Wire Wire Line
+	14575 9250 14300 9250
+Text Label 13750 9250 0    47   ~ 0
+DC-In
+$Comp
+L power:GND #PWR0107
+U 1 1 5D8E4F6F
+P 14550 9350
+F 0 "#PWR0107" H 14550 9100 50  0001 C CNN
+F 1 "GND" H 14550 9200 47  0000 C CNN
+F 2 "" H 14550 9350 50  0001 C CNN
+F 3 "" H 14550 9350 50  0001 C CNN
+	1    14550 9350
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	14575 9350 14550 9350
+Wire Wire Line
+	14550 9350 14550 9500
+Wire Wire Line
+	14550 9500 14575 9500
+Connection ~ 14550 9350
+Wire Wire Line
+	14575 9600 14300 9600
+Wire Wire Line
+	14300 9600 14300 9250
+Connection ~ 14300 9250
+$Comp
+L Acorn_System_1:74LS00_System_1 U12
+U 3 1 5DBE2143
+P 7575 2700
+F 0 "U12" H 7550 2700 47  0000 C CNN
+F 1 "74LS00" H 7575 2934 47  0001 C CNN
+F 2 "Acorn_System_1:DIP-14_W7.62mm_Socket_LongPads_AJP" H 7575 2700 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74ls00" H 7575 2700 50  0001 C CNN
+	3    7575 2700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Acorn_System_1:74LS00_System_1 U12
+U 1 1 5DBE236F
+P 6850 3150
+F 0 "U12" H 6825 3150 47  0000 C CNN
+F 1 "74LS00" H 7125 3025 47  0001 C CNN
+F 2 "Acorn_System_1:DIP-14_W7.62mm_Socket_LongPads_AJP" H 6850 3150 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74ls00" H 6850 3150 50  0001 C CNN
+	1    6850 3150
+	1    0    0    1   
+$EndComp
+$Comp
+L Acorn_System_1:74LS00_System_1 U12
+U 4 2 5DCA7CCC
+P 6975 2800
+F 0 "U12" H 6975 2800 47  0000 C CNN
+F 1 "74LS00" H 7250 2725 47  0001 C CNN
+F 2 "Acorn_System_1:DIP-14_W7.62mm_Socket_LongPads_AJP" H 6975 2800 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74ls00" H 6975 2800 50  0001 C CNN
+	4    6975 2800
+	1    0    0    1   
+$EndComp
+Text Notes 7825 3000 2    47   ~ 0
+U12 - 74LS00
+Text Notes 5700 2725 2    47   ~ 0
+U11 - 74LS04
+Text Notes 5725 3650 2    47   ~ 0
+U11 - 74LS04
+Connection ~ 6275 5500
+Connection ~ 6375 3775
+Wire Wire Line
+	7275 2600 6375 2600
+$Comp
+L power:+5V #PWR0108
+U 1 1 5DF0ACED
+P 6675 2700
+F 0 "#PWR0108" H 6675 2550 50  0001 C CNN
+F 1 "+5V" V 6675 2825 47  0000 L CNN
+F 2 "" H 6675 2700 50  0001 C CNN
+F 3 "" H 6675 2700 50  0001 C CNN
+	1    6675 2700
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7150 3150 7350 3150
+Text Label 8050 2700 2    47   ~ 0
+nwds
+Text Label 7350 3150 2    47   ~ 0
+nrds
+Wire Wire Line
+	7875 2700 8050 2700
+Wire Wire Line
+	6275 3050 6450 3050
+Wire Wire Line
+	6375 3250 6375 3775
+Wire Wire Line
+	6375 2600 6375 3250
+Connection ~ 6375 3250
+Wire Wire Line
+	6375 3250 6550 3250
+Wire Wire Line
+	6675 2900 6450 2900
+Wire Wire Line
+	6450 2900 6450 3050
+Connection ~ 6450 3050
+Wire Wire Line
+	6450 3050 6550 3050
+Wire Wire Line
+	6375 3250 2600 3250
+Wire Wire Line
+	2600 3250 2600 4900
+Wire Wire Line
+	2600 4900 2050 4900
+$Comp
+L Acorn_System_1:Address_Select U0
+U 1 1 5E67F1AB
+P 9450 1225
+F 0 "U0" H 9700 1366 39  0000 C CNN
+F 1 "Address_Select" H 9700 1291 39  0000 C CNN
+F 2 "Acorn_System_1:DIP-16_W7.62mm_Socket_LongPads_AJP" H 10050 1225 50  0001 C CNN
+F 3 "" H 10050 1225 50  0001 C CNN
+	1    9450 1225
+	1    0    0    -1  
+$EndComp
+Text Notes 1850 4025 2    47   ~ 0
+nrst
+Text Notes 1850 3925 2    47   ~ 0
++5V
+Text Notes 1850 4125 2    47   ~ 0
+PB7
+Text Notes 1850 4225 2    47   ~ 0
+PB6
+Text Notes 1850 4325 2    47   ~ 0
+PB5
+Text Notes 1850 4425 2    47   ~ 0
+PB4
+Text Notes 1850 4525 2    47   ~ 0
+PB3
+Text Notes 1850 4625 2    47   ~ 0
+PB2
+Text Notes 1850 4725 2    47   ~ 0
+PB1
+Text Notes 1850 4825 2    47   ~ 0
+PB0
+Text Notes 1850 4925 2    47   ~ 0
+PHI2
+Text Notes 1850 5025 2    47   ~ 0
+PA7
+Text Notes 1850 5125 2    47   ~ 0
+PA6
+Text Notes 1850 5225 2    47   ~ 0
+PA5
+Text Notes 1850 5325 2    47   ~ 0
+PA4
+Text Notes 1850 5425 2    47   ~ 0
+PA3
+Text Notes 1850 5525 2    47   ~ 0
+PA2
+Text Notes 1850 5625 2    47   ~ 0
+PA1
+Text Notes 1850 5725 2    47   ~ 0
+PA0
+Text Notes 1850 5825 2    47   ~ 0
+GND
+$Comp
+L Switch:SW_Push SW1
+U 1 1 5C75860F
+P 2250 7650
+F 0 "SW1" V 2296 7602 47  0000 R CNN
+F 1 "RESET" V 2205 7602 47  0000 R CNN
+F 2 "Acorn_System_1:Tactile_Switch_AJP" H 2250 7850 50  0001 C CNN
+F 3 "" H 2250 7850 50  0001 C CNN
+	1    2250 7650
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R R1
+U 1 1 5C758FAC
+P 2450 7200
+F 0 "R1" H 2520 7244 47  0000 L CNN
+F 1 "4K7" V 2450 7125 47  0000 L CNN
+F 2 "Acorn_System_1:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal_AJP" V 2380 7200 50  0001 C CNN
+F 3 "~" H 2450 7200 50  0001 C CNN
+	1    2450 7200
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR0109
+U 1 1 5C7591EF
+P 2450 7050
+F 0 "#PWR0109" H 2450 6900 50  0001 C CNN
+F 1 "+5V" H 2450 7200 47  0000 C CNN
+F 2 "" H 2450 7050 50  0001 C CNN
+F 3 "" H 2450 7050 50  0001 C CNN
+	1    2450 7050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2450 7350 2450 7400
+Wire Wire Line
+	2450 7400 2250 7400
+Wire Wire Line
+	2250 7400 2250 7450
+Wire Wire Line
+	3825 7400 2450 7400
+Connection ~ 3825 4900
+Connection ~ 2450 7400
+Wire Wire Line
+	5525 5600 5875 5600
+Wire Wire Line
+	5875 7400 3825 7400
+Wire Wire Line
+	5875 5600 5875 7400
+Connection ~ 3825 7400
+Connection ~ 5875 7400
+Wire Wire Line
+	12300 7400 12300 5600
+Wire Wire Line
+	12300 5600 12725 5600
+Wire Wire Line
+	5875 7400 12300 7400
+NoConn ~ 12725 5700
+Wire Wire Line
+	13650 6750 13650 7400
+Wire Wire Line
+	13650 7400 12300 7400
+Connection ~ 12300 7400
+Wire Wire Line
+	13650 6750 14575 6750
+$Comp
+L power:GND #PWR0110
+U 1 1 5CA2AE57
+P 2250 7850
+F 0 "#PWR0110" H 2250 7600 50  0001 C CNN
+F 1 "GND" H 2250 7700 47  0000 C CNN
+F 2 "" H 2250 7850 50  0001 C CNN
+F 3 "" H 2250 7850 50  0001 C CNN
+	1    2250 7850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R4
+U 1 1 5CA2B056
+P 2950 7900
+F 0 "R4" H 3020 7944 47  0000 L CNN
+F 1 "4K7" V 2950 7825 47  0000 L CNN
+F 2 "Acorn_System_1:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal_AJP" V 2880 7900 50  0001 C CNN
+F 3 "~" H 2950 7900 50  0001 C CNN
+	1    2950 7900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR0111
+U 1 1 5CA2B05C
+P 2875 7700
+F 0 "#PWR0111" H 2875 7550 50  0001 C CNN
+F 1 "+5V" H 2875 7850 47  0000 C CNN
+F 2 "" H 2875 7700 50  0001 C CNN
+F 3 "" H 2875 7700 50  0001 C CNN
+	1    2875 7700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C4
+U 1 1 5CA62F30
+P 2800 7900
+F 0 "C4" H 2625 7950 47  0000 L CNN
+F 1 "10n" H 2600 7850 47  0000 L CNN
+F 2 "Acorn_System_1:C_Disc_D10.0mm_W2.5mm_P5.00mm_AJP" H 2800 7900 50  0001 C CNN
+F 3 "~" H 2800 7900 50  0001 C CNN
+	1    2800 7900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2950 7750 2950 7725
+Wire Wire Line
+	2950 7725 2875 7725
+Wire Wire Line
+	2800 7725 2800 7800
+Wire Wire Line
+	2875 7700 2875 7725
+Connection ~ 2875 7725
+Wire Wire Line
+	2875 7725 2800 7725
+Wire Wire Line
+	2950 8050 2950 8075
+Wire Wire Line
+	2800 8075 2800 8000
+$Comp
+L Switch:SW_Push SW2
+U 1 1 5CB0DAAD
+P 2875 8325
+F 0 "SW2" V 2921 8277 47  0000 R CNN
+F 1 "IRQ" V 2830 8277 47  0000 R CNN
+F 2 "Acorn_System_1:Tactile_Switch_AJP" H 2875 8525 50  0001 C CNN
+F 3 "" H 2875 8525 50  0001 C CNN
+	1    2875 8325
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR0112
+U 1 1 5CB0DAB3
+P 2875 8525
+F 0 "#PWR0112" H 2875 8275 50  0001 C CNN
+F 1 "GND" H 2875 8375 47  0000 C CNN
+F 2 "" H 2875 8525 50  0001 C CNN
+F 3 "" H 2875 8525 50  0001 C CNN
+	1    2875 8525
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R3
+U 1 1 5CBF5B32
+P 3575 8575
+F 0 "R3" H 3645 8619 47  0000 L CNN
+F 1 "4K7" V 3575 8500 47  0000 L CNN
+F 2 "Acorn_System_1:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal_AJP" V 3505 8575 50  0001 C CNN
+F 3 "~" H 3575 8575 50  0001 C CNN
+	1    3575 8575
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR0113
+U 1 1 5CBF5B38
+P 3500 8375
+F 0 "#PWR0113" H 3500 8225 50  0001 C CNN
+F 1 "+5V" H 3500 8525 47  0000 C CNN
+F 2 "" H 3500 8375 50  0001 C CNN
+F 3 "" H 3500 8375 50  0001 C CNN
+	1    3500 8375
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C3
+U 1 1 5CBF5B3E
+P 3425 8575
+F 0 "C3" H 3250 8625 47  0000 L CNN
+F 1 "10n" H 3225 8525 47  0000 L CNN
+F 2 "Acorn_System_1:C_Disc_D10.0mm_W2.5mm_P5.00mm_AJP" H 3425 8575 50  0001 C CNN
+F 3 "~" H 3425 8575 50  0001 C CNN
+	1    3425 8575
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3575 8425 3575 8400
+Wire Wire Line
+	3575 8400 3500 8400
+Wire Wire Line
+	3425 8400 3425 8475
+Wire Wire Line
+	3500 8375 3500 8400
+Connection ~ 3500 8400
+Wire Wire Line
+	3500 8400 3425 8400
+Wire Wire Line
+	3575 8725 3575 8750
+Wire Wire Line
+	3425 8750 3425 8675
+$Comp
+L Switch:SW_Push SW3
+U 1 1 5CBF5B4D
+P 3500 9000
+F 0 "SW3" V 3546 8952 47  0000 R CNN
+F 1 "NMI" V 3455 8952 47  0000 R CNN
+F 2 "Acorn_System_1:Tactile_Switch_AJP" H 3500 9200 50  0001 C CNN
+F 3 "" H 3500 9200 50  0001 C CNN
+	1    3500 9000
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR0114
+U 1 1 5CBF5B53
+P 3500 9200
+F 0 "#PWR0114" H 3500 8950 50  0001 C CNN
+F 1 "GND" H 3500 9050 47  0000 C CNN
+F 2 "" H 3500 9200 50  0001 C CNN
+F 3 "" H 3500 9200 50  0001 C CNN
+	1    3500 9200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2800 8075 2875 8075
+Wire Wire Line
+	3425 8750 3500 8750
+Wire Wire Line
+	3500 8800 3500 8750
+Connection ~ 3500 8750
+Wire Wire Line
+	3500 8750 3575 8750
+Wire Wire Line
+	2875 8125 2875 8075
+Connection ~ 2875 8075
+Wire Wire Line
+	2875 8075 2950 8075
+Wire Wire Line
+	2950 8075 5975 8075
+Connection ~ 2950 8075
+Wire Wire Line
+	5975 5200 5975 8075
+$Comp
+L power:+5V #PWR0115
+U 1 1 5CEC89E7
+P 5650 5350
+F 0 "#PWR0115" H 5650 5200 50  0001 C CNN
+F 1 "+5V" V 5650 5475 47  0000 L CNN
+F 2 "" H 5650 5350 50  0001 C CNN
+F 3 "" H 5650 5350 50  0001 C CNN
+	1    5650 5350
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5525 5300 5600 5300
+Wire Wire Line
+	5600 5300 5600 5350
+Wire Wire Line
+	5600 5400 5525 5400
+Wire Wire Line
+	5650 5350 5600 5350
+Connection ~ 5600 5350
+Wire Wire Line
+	5600 5350 5600 5400
+Wire Wire Line
+	5975 8075 13650 8075
+Wire Wire Line
+	13650 8075 13650 9900
+Wire Wire Line
+	13650 9900 14575 9900
+Connection ~ 5975 8075
+Wire Wire Line
+	3575 8750 6075 8750
+Connection ~ 3575 8750
+Wire Wire Line
+	6075 5100 5525 5100
+Wire Wire Line
+	6075 5100 6075 8750
+Wire Wire Line
+	13550 8750 13550 9800
+Wire Wire Line
+	13550 9800 14575 9800
+Wire Wire Line
+	6075 8750 13550 8750
+Connection ~ 6075 8750
+Wire Wire Line
+	5525 5000 6175 5000
+Wire Wire Line
+	6175 5000 6175 7275
+Wire Wire Line
+	13450 7275 13450 9700
+Wire Wire Line
+	13450 9700 14575 9700
+Wire Wire Line
+	6175 7275 13450 7275
+Wire Wire Line
+	3475 5000 3925 5000
+Wire Wire Line
+	3475 5100 3975 5100
+Wire Wire Line
+	3475 5200 4025 5200
+Wire Wire Line
+	4175 3350 4175 5300
+Wire Wire Line
+	4175 5300 3475 5300
+Wire Wire Line
+	3475 5400 4275 5400
+Wire Wire Line
+	4275 5400 4275 3450
+NoConn ~ 3475 5600
+Wire Wire Line
+	5350 2150 5350 2275
+Wire Wire Line
+	12000 3800 12000 3450
+Connection ~ 12000 3800
+Wire Wire Line
+	12050 3750 12050 3350
+Connection ~ 12050 3750
+Wire Wire Line
+	4025 675  10775 675 
+Wire Wire Line
+	10775 675  10775 1825
+Wire Wire Line
+	10775 1825 10050 1825
+Wire Wire Line
+	4025 675  4025 5200
+Wire Wire Line
+	3975 625  3975 5100
+Wire Wire Line
+	3925 575  10875 575 
+Wire Wire Line
+	10875 575  10875 2025
+Wire Wire Line
+	3925 575  3925 5000
+Wire Wire Line
+	3975 625  10825 625 
+Wire Wire Line
+	10825 1925 10050 1925
+Wire Wire Line
+	10825 625  10825 1925
+Wire Wire Line
+	10875 2025 10050 2025
+Wire Wire Line
+	8750 1050 8750 1325
+Wire Wire Line
+	8750 1325 9350 1325
+Wire Wire Line
+	7275 1050 8750 1050
+Wire Wire Line
+	9350 1425 8550 1425
+Wire Wire Line
+	8550 1425 8550 1250
+Wire Wire Line
+	7275 1250 8550 1250
+Wire Wire Line
+	7275 2200 7650 2200
+Wire Wire Line
+	7650 2200 7650 1625
+Wire Wire Line
+	7275 2100 7550 2100
+Wire Wire Line
+	7550 2100 7550 1725
+Wire Wire Line
+	7550 1725 9350 1725
+Wire Wire Line
+	7875 2100 7550 2100
+Connection ~ 7550 2100
+Text Notes 8200 1600 2    47   ~ 0
+~08xx-0Bxx
+Text Notes 8200 1725 2    47   ~ 0
+~0Cxx-0Fxx
+Wire Wire Line
+	12575 4300 13625 4300
+Wire Wire Line
+	7275 2400 7650 2400
+Wire Wire Line
+	7650 2400 7650 2300
+Wire Wire Line
+	7650 2300 7875 2300
+Wire Wire Line
+	8750 2200 8750 1825
+Wire Wire Line
+	8750 1825 9350 1825
+Wire Wire Line
+	8475 2200 8750 2200
+Wire Wire Line
+	7650 2400 7650 2500
+Wire Wire Line
+	7650 2500 8150 2500
+Wire Wire Line
+	10250 2500 10250 1525
+Wire Wire Line
+	10250 1525 10050 1525
+Connection ~ 7650 2400
+Wire Wire Line
+	10050 1325 10150 1325
+$Comp
+L power:GND #PWR0116
+U 1 1 5E29B5AE
+P 10150 1325
+F 0 "#PWR0116" H 10150 1075 50  0001 C CNN
+F 1 "GND" V 10155 1197 50  0000 R CNN
+F 2 "" H 10150 1325 50  0001 C CNN
+F 3 "" H 10150 1325 50  0001 C CNN
+	1    10150 1325
+	0    -1   -1   0   
+$EndComp
+Entry Wire Line
+	9100 1625 9200 1525
+Text Label 9200 1525 0    39   ~ 0
+A09
+Wire Wire Line
+	9350 1525 9200 1525
+Entry Wire Line
+	9100 2025 9200 1925
+Text Label 9200 1925 0    39   ~ 0
+A08
+Wire Wire Line
+	9350 1925 9200 1925
+Entry Wire Line
+	9100 2125 9200 2025
+Text Label 9200 2025 0    39   ~ 0
+A07
+Wire Wire Line
+	9350 2025 9200 2025
+Wire Bus Line
+	9100 2800 9050 2850
+Wire Bus Line
+	9050 2850 8525 2850
+Wire Bus Line
+	8525 2850 8475 2900
+Entry Wire Line
+	9100 2750 9200 2850
+Text Label 9200 2850 0    39   ~ 0
+A10
+Wire Wire Line
+	14450 2850 14450 3800
+Wire Wire Line
+	14450 3800 14575 3800
+Wire Wire Line
+	9200 2850 14450 2850
+Text Notes 10175 2475 2    47   ~ 0
+~00xx-03xx
+Text Notes 8825 2300 2    47   ~ 0
+~00xx-03xx +
+Text Notes 8900 2400 2    47   ~ 0
+~0Cxx-0Fxx
+Wire Wire Line
+	7525 5500 7900 5500
+Wire Wire Line
+	7900 5500 7900 3600
+Wire Wire Line
+	7900 3600 7525 3600
+Wire Wire Line
+	7900 3600 7900 3450
+Connection ~ 7900 3600
+Connection ~ 7900 3450
+Wire Wire Line
+	7900 3450 8050 3450
+Wire Wire Line
+	8150 2500 8150 3700
+Wire Wire Line
+	8150 3700 7525 3700
+Connection ~ 8150 2500
+Wire Wire Line
+	8150 2500 10250 2500
+Wire Wire Line
+	8150 3700 8150 5600
+Wire Wire Line
+	8150 5600 7525 5600
+Connection ~ 8150 3700
+Wire Wire Line
+	9525 5600 9875 5600
+Wire Wire Line
+	9875 5600 9875 3700
+Wire Wire Line
+	9525 3700 9875 3700
+Connection ~ 9875 3700
+Wire Wire Line
+	9875 2600 10350 2600
+Wire Wire Line
+	10350 2600 10350 1425
+Wire Wire Line
+	10350 1425 10050 1425
+Wire Wire Line
+	9875 2600 9875 3700
+Wire Wire Line
+	12100 1725 10050 1725
+Wire Wire Line
+	12100 1725 12100 5300
+Wire Wire Line
+	11525 5400 11600 5400
+Wire Wire Line
+	11600 1625 10050 1625
+Wire Wire Line
+	11600 1625 11600 5400
+Wire Wire Line
+	12150 950  12150 5200
+Wire Wire Line
+	12200 850  12200 5100
+$Comp
+L Acorn_System_1:LM7805_TO220 U13
+U 1 1 5EB3B85C
+P 12050 9100
+F 0 "U13" H 12050 9336 47  0000 C CNN
+F 1 "LM340-T5" H 12050 9249 47  0000 C CNN
+F 2 "Acorn_System_1:TO-220-3_Horizontal_7805_AJP" H 12050 9325 50  0001 C CIN
+F 3 "http://www.fairchildsemi.com/ds/LM/LM7805.pdf" H 12050 9050 50  0001 C CNN
+	1    12050 9100
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	13350 9250 13350 9100
+Wire Wire Line
+	13350 9100 12700 9100
+Wire Wire Line
+	13350 9250 14300 9250
+$Comp
+L Device:CP_Small C10
+U 1 1 5EC3D492
+P 12700 9300
+F 0 "C10" H 12788 9344 47  0000 L CNN
+F 1 "15uF/15V" H 12788 9257 47  0000 L CNN
+F 2 "Acorn_System_1:CP_Radial_D6.3mm_P2.50mm_AJP" H 12700 9300 50  0001 C CNN
+F 3 "~" H 12700 9300 50  0001 C CNN
+	1    12700 9300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C8
+U 1 1 5EC3E088
+P 11450 9300
+F 0 "C8" H 11525 9350 47  0000 L CNN
+F 1 "100n" H 11525 9275 47  0001 L CNN
+F 2 "Acorn_System_1:C_Disc_D10.0mm_W2.5mm_P5.00mm_AJP" H 11450 9300 50  0001 C CNN
+F 3 "~" H 11450 9300 50  0001 C CNN
+	1    11450 9300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C1
+U 1 1 5EC3E290
+P 11100 9225
+F 0 "C1" H 11175 9275 47  0000 L CNN
+F 1 "100n" H 11175 9200 47  0001 L CNN
+F 2 "Acorn_System_1:C_Disc_D10.0mm_W2.5mm_P5.00mm_AJP" H 11100 9225 50  0001 C CNN
+F 3 "~" H 11100 9225 50  0001 C CNN
+	1    11100 9225
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C2
+U 1 1 5EC3E4ED
+P 10900 9350
+F 0 "C2" H 10975 9400 47  0000 L CNN
+F 1 "100n" H 10975 9325 47  0001 L CNN
+F 2 "Acorn_System_1:C_Disc_D10.0mm_W2.5mm_P5.00mm_AJP" H 10900 9350 50  0001 C CNN
+F 3 "~" H 10900 9350 50  0001 C CNN
+	1    10900 9350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C5
+U 1 1 5EC3EA0A
+P 10625 9225
+F 0 "C5" H 10700 9275 47  0000 L CNN
+F 1 "100n" H 10700 9200 47  0001 L CNN
+F 2 "Acorn_System_1:C_Disc_D10.0mm_W2.5mm_P5.00mm_AJP" H 10625 9225 50  0001 C CNN
+F 3 "~" H 10625 9225 50  0001 C CNN
+	1    10625 9225
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C6
+U 1 1 5EC3EB26
+P 10425 9350
+F 0 "C6" H 10500 9400 47  0000 L CNN
+F 1 "100n" H 10500 9325 47  0001 L CNN
+F 2 "Acorn_System_1:C_Disc_D10.0mm_W2.5mm_P5.00mm_AJP" H 10425 9350 50  0001 C CNN
+F 3 "~" H 10425 9350 50  0001 C CNN
+	1    10425 9350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C7
+U 1 1 5EC3ED3D
+P 10150 9225
+F 0 "C7" H 10225 9275 47  0000 L CNN
+F 1 "100n" H 10225 9200 47  0001 L CNN
+F 2 "Acorn_System_1:C_Disc_D10.0mm_W2.5mm_P5.00mm_AJP" H 10150 9225 50  0001 C CNN
+F 3 "~" H 10150 9225 50  0001 C CNN
+	1    10150 9225
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C9
+U 1 1 5EC3ED43
+P 9950 9350
+F 0 "C9" H 10025 9400 47  0000 L CNN
+F 1 "100n" H 10025 9325 47  0001 L CNN
+F 2 "Acorn_System_1:C_Disc_D10.0mm_W2.5mm_P5.00mm_AJP" H 9950 9350 50  0001 C CNN
+F 3 "~" H 9950 9350 50  0001 C CNN
+	1    9950 9350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	12700 9400 12700 9500
+Wire Wire Line
+	12700 9500 12050 9500
+Wire Wire Line
+	9950 9500 9950 9450
+Wire Wire Line
+	12050 9400 12050 9500
+Connection ~ 12050 9500
+Wire Wire Line
+	12050 9500 11450 9500
+Wire Wire Line
+	12050 9500 12050 9600
+Wire Wire Line
+	11750 9100 11450 9100
+Wire Wire Line
+	9950 9100 9950 9250
+Wire Wire Line
+	10150 9100 10150 9125
+Connection ~ 10150 9100
+Wire Wire Line
+	10150 9100 9950 9100
+Wire Wire Line
+	10625 9125 10625 9100
+Connection ~ 10625 9100
+Wire Wire Line
+	10625 9100 10425 9100
+Wire Wire Line
+	11100 9125 11100 9100
+Connection ~ 11100 9100
+Wire Wire Line
+	11100 9100 10900 9100
+Wire Wire Line
+	11450 9200 11450 9100
+Connection ~ 11450 9100
+Wire Wire Line
+	11450 9100 11100 9100
+Wire Wire Line
+	12700 9200 12700 9100
+Connection ~ 12700 9100
+Wire Wire Line
+	12700 9100 12350 9100
+Wire Wire Line
+	11450 9400 11450 9500
+Connection ~ 11450 9500
+Wire Wire Line
+	11450 9500 11100 9500
+Wire Wire Line
+	10900 9250 10900 9100
+Connection ~ 10900 9100
+Wire Wire Line
+	10900 9100 10625 9100
+Wire Wire Line
+	10425 9450 10425 9500
+Connection ~ 10425 9500
+Wire Wire Line
+	10425 9500 10150 9500
+Wire Wire Line
+	10425 9250 10425 9100
+Connection ~ 10425 9100
+Wire Wire Line
+	10425 9100 10150 9100
+Wire Wire Line
+	10900 9450 10900 9500
+Connection ~ 10900 9500
+Wire Wire Line
+	10900 9500 10625 9500
+Text Notes 10625 9025 0    50   ~ 0
+7 * 100n
+$Comp
+L power:GND #PWR0117
+U 1 1 5F171F32
+P 12050 9600
+F 0 "#PWR0117" H 12050 9350 50  0001 C CNN
+F 1 "GND" H 12050 9450 47  0000 C CNN
+F 2 "" H 12050 9600 50  0001 C CNN
+F 3 "" H 12050 9600 50  0001 C CNN
+	1    12050 9600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR0118
+U 1 1 5F1720EA
+P 9850 9100
+F 0 "#PWR0118" H 9850 8950 50  0001 C CNN
+F 1 "+5V" V 9865 9228 50  0000 L CNN
+F 2 "" H 9850 9100 50  0001 C CNN
+F 3 "" H 9850 9100 50  0001 C CNN
+	1    9850 9100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	9850 9100 9950 9100
+Connection ~ 9950 9100
+Wire Wire Line
+	11100 9325 11100 9500
+Connection ~ 11100 9500
+Wire Wire Line
+	11100 9500 10900 9500
+Wire Wire Line
+	10625 9325 10625 9500
+Connection ~ 10625 9500
+Wire Wire Line
+	10625 9500 10425 9500
+Wire Wire Line
+	10150 9325 10150 9500
+Connection ~ 10150 9500
+Wire Wire Line
+	10150 9500 9950 9500
+Text Notes 7325 10250 0    47   ~ 0
+0.0
+Text Notes 7625 10250 0    47   ~ 0
+Jan. 17, 2019
+Text Notes 8200 10250 0    47   ~ 0
+Initial release
+Text Notes 14750 6275 0    47   ~ 0
++5V
+Text Notes 14750 4825 0    47   ~ 0
+PA7
+Text Notes 14750 4925 0    47   ~ 0
+PA6
+Text Notes 14750 5025 0    47   ~ 0
+PA5
+Text Notes 14750 5125 0    47   ~ 0
+PA4
+Text Notes 14750 5225 0    47   ~ 0
+PA3
+Text Notes 14750 5325 0    47   ~ 0
+PA2
+Text Notes 14750 5425 0    47   ~ 0
+PA1
+Text Notes 14750 5525 0    47   ~ 0
+PA0
+Text Notes 14750 4025 0    47   ~ 0
+PB7
+Text Notes 14750 4125 0    47   ~ 0
+PB6
+Text Notes 14750 4225 0    47   ~ 0
+PB5
+Text Notes 14750 4325 0    47   ~ 0
+PB4
+Text Notes 14750 4425 0    47   ~ 0
+PB3
+Text Notes 14750 4525 0    47   ~ 0
+PB2
+Text Notes 14750 4625 0    47   ~ 0
+PB1
+Text Notes 14750 4725 0    47   ~ 0
+PB0
+Text Notes 14750 3825 0    47   ~ 0
+A10
+Text Notes 14750 3925 0    47   ~ 0
+VPP
+Text Notes 14750 6375 0    47   ~ 0
+A15
+Text Notes 14750 6475 0    47   ~ 0
+A14
+Text Notes 14750 6575 0    47   ~ 0
+NWDS
+Text Notes 14750 6675 0    47   ~ 0
+NRDS
+Text Notes 14750 6775 0    47   ~ 0
+NRST
+Text Notes 14750 6875 0    47   ~ 0
+A08
+Text Notes 14750 6975 0    47   ~ 0
+A07
+Text Notes 14750 7075 0    47   ~ 0
+A06
+Text Notes 14750 7175 0    47   ~ 0
+A05
+Text Notes 14750 7275 0    47   ~ 0
+A04
+Text Notes 14750 7375 0    47   ~ 0
+A03
+Text Notes 14750 7475 0    47   ~ 0
+A02
+Text Notes 14750 7575 0    47   ~ 0
+A01
+Text Notes 14750 7675 0    47   ~ 0
+A00
+Text Notes 14750 7775 0    47   ~ 0
+D07
+Text Notes 14750 7875 0    47   ~ 0
+D06
+Text Notes 14750 7975 0    47   ~ 0
+D05
+Text Notes 14750 8075 0    47   ~ 0
+D04
+Text Notes 14750 8175 0    47   ~ 0
+D03
+Text Notes 14750 8275 0    47   ~ 0
+D02
+Text Notes 14750 8375 0    47   ~ 0
+D01
+Text Notes 14750 8475 0    47   ~ 0
+D00
+Text Notes 14750 8575 0    47   ~ 0
+A13
+Text Notes 14750 8675 0    47   ~ 0
+A12
+Text Notes 14750 8775 0    47   ~ 0
+A11
+Text Notes 14750 8875 0    47   ~ 0
+A10
+Text Notes 14750 8975 0    47   ~ 0
+A09
+Text Notes 14750 9175 0    47   ~ 0
+R/~W
+Text Notes 14750 9075 0    47   ~ 0
+PHI2
+Text Notes 14750 9275 0    47   ~ 0
+DC In / ~BLOCK0
+Text Notes 14750 9375 0    47   ~ 0
+GND
+Text Notes 14750 9500 0    47   ~ 0
+GND
+Text Notes 14750 9600 0    47   ~ 0
+DC In
+Text Notes 14750 9700 0    47   ~ 0
+SYN
+Text Notes 14750 9800 0    47   ~ 0
+NMI
+Text Notes 14750 9900 0    47   ~ 0
+IRQ
+Entry Wire Line
+	9100 950  9200 850 
+Text Label 9200 850  0    39   ~ 0
+A08
+Entry Wire Line
+	9100 1050 9200 950 
+Text Label 9200 950  0    39   ~ 0
+A07
+Wire Wire Line
+	9200 950  12150 950 
+Wire Wire Line
+	9200 850  12200 850 
+NoConn ~ 7275 2300
+NoConn ~ 7275 1350
+NoConn ~ 7275 1150
+$Comp
+L power:VCC #PWR0119
+U 1 1 5FAE12CF
+P 9950 9000
+F 0 "#PWR0119" H 9950 8850 50  0001 C CNN
+F 1 "VCC" H 9967 9173 50  0000 C CNN
+F 2 "" H 9950 9000 50  0001 C CNN
+F 3 "" H 9950 9000 50  0001 C CNN
+	1    9950 9000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9950 9000 9950 9100
+Wire Wire Line
+	2450 4300 3625 4300
+Wire Wire Line
+	6275 3050 6275 5500
+Wire Wire Line
+	5975 5200 5525 5200
+$Comp
+L Acorn_System_1:7400 U12
+U 5 1 5C83197B
+P 1600 10200
+F 0 "U12" H 1525 10250 47  0000 L CNN
+F 1 "74LS00" H 1475 10175 47  0000 L CNN
+F 2 "Acorn_System_1:DIP-14_W7.62mm_Socket_LongPads_AJP" H 1600 10200 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74ls00" H 1600 10200 50  0001 C CNN
+	5    1600 10200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Acorn_System_1:74LS04_System_1 U11
+U 7 1 5C8331ED
+P 2100 10200
+F 0 "U11" H 2025 10250 47  0000 L CNN
+F 1 "74LS04" H 1975 10175 47  0000 L CNN
+F 2 "Acorn_System_1:DIP-14_W7.62mm_Socket_LongPads_AJP" H 2100 10200 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS04" H 2100 10200 50  0001 C CNN
+	7    2100 10200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Acorn_System_1:74LS139_System_1 U10
+U 3 1 5C8348AB
+P 2600 10200
+F 0 "U10" H 2525 10250 50  0000 L CNN
+F 1 "74LS139" H 2450 10175 47  0000 L CNN
+F 2 "Acorn_System_1:DIP-16_W7.62mm_Socket_LongPads_AJP" H 2600 10200 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS139" H 2600 10200 50  0001 C CNN
+	3    2600 10200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Acorn_System_1:74LS20_System_1 U9
+U 3 1 5C8358C0
+P 3100 10200
+F 0 "U9" H 3025 10250 47  0000 L CNN
+F 1 "74LS20" H 2975 10175 47  0000 L CNN
+F 2 "Acorn_System_1:DIP-14_W7.62mm_Socket_LongPads_AJP" H 3100 10200 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS20" H 3100 10200 50  0001 C CNN
+	3    3100 10200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3100 10700 3100 10750
+Wire Wire Line
+	3100 10750 2600 10750
+Wire Wire Line
+	1600 10750 1600 10700
+Wire Wire Line
+	2100 10700 2100 10750
+Connection ~ 2100 10750
+Wire Wire Line
+	2100 10750 1600 10750
+Wire Wire Line
+	2600 10700 2600 10750
+Connection ~ 2600 10750
+Wire Wire Line
+	2600 10750 2350 10750
+Wire Wire Line
+	2350 10750 2350 10800
+Connection ~ 2350 10750
+Wire Wire Line
+	2350 10750 2100 10750
+Wire Wire Line
+	3100 9700 3100 9650
+Wire Wire Line
+	3100 9650 2600 9650
+Wire Wire Line
+	1600 9650 1600 9700
+Wire Wire Line
+	2100 9700 2100 9650
+Connection ~ 2100 9650
+Wire Wire Line
+	2100 9650 1600 9650
+Wire Wire Line
+	2600 9700 2600 9650
+Connection ~ 2600 9650
+Wire Wire Line
+	2600 9650 2350 9650
+Wire Wire Line
+	2350 9650 2350 9600
+Connection ~ 2350 9650
+Wire Wire Line
+	2350 9650 2100 9650
+$Comp
+L power:+5V #PWR0120
+U 1 1 5CB41DCF
+P 2350 9600
+F 0 "#PWR0120" H 2350 9450 50  0001 C CNN
+F 1 "+5V" H 2350 9750 47  0000 C CNN
+F 2 "" H 2350 9600 50  0001 C CNN
+F 3 "" H 2350 9600 50  0001 C CNN
+	1    2350 9600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0121
+U 1 1 5CB41E60
+P 2350 10800
+F 0 "#PWR0121" H 2350 10550 50  0001 C CNN
+F 1 "GND" H 2350 10650 47  0000 C CNN
+F 2 "" H 2350 10800 50  0001 C CNN
+F 3 "" H 2350 10800 50  0001 C CNN
+	1    2350 10800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Acorn_System_1:PL6-7-DIN41612 J1
+U 1 1 5CC7824E
+P 14175 8350
+F 0 "J1" H 14753 9877 50  0000 L CNN
+F 1 "PL6-7-DIN41612" V 15050 8550 47  0000 L CNN
+F 2 "Acorn_System_1:C64AC_AJP" H 14825 8400 50  0001 C CNN
+F 3 "~" H 14825 8400 50  0001 C CNN
+	1    14175 8350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4175 3350 7350 3350
+Wire Wire Line
+	4275 3450 7900 3450
+Wire Wire Line
+	8050 2700 8050 3450
+Connection ~ 8050 3450
+Wire Wire Line
+	8050 3450 12000 3450
+Wire Wire Line
+	7350 3150 7350 3350
+Connection ~ 7350 3350
+Wire Wire Line
+	7350 3350 12050 3350
+Text Notes 7325 10375 0    47   ~ 0
+0.5
+Text Notes 7625 10375 0    47   ~ 0
+Jan. 19, 2019
+Text Notes 8200 10375 0    47   ~ 0
+Minor errors corrected
+Wire Wire Line
+	6150 2100 6150 3150
+Wire Wire Line
+	6150 3150 4100 3150
+Wire Wire Line
+	4100 3150 4100 7525
+Wire Wire Line
+	4100 7525 13350 7525
+Connection ~ 6150 2100
+Wire Wire Line
+	6150 2100 6075 2100
+$Comp
+L Device:Jumper_NO_Small JP2
+U 1 1 5CA105E0
+P 13350 8375
+F 0 "JP2" V 13250 8200 47  0000 L CNN
+F 1 "~BLOCK0" V 13375 8050 47  0000 L CNN
+F 2 "Acorn_System_1:PinSocket_1x02_P2.54mm_Vertical_AJP" H 13350 8375 50  0001 C CNN
+F 3 "~" H 13350 8375 50  0001 C CNN
+	1    13350 8375
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	13350 7525 13350 8275
+Wire Wire Line
+	13350 8475 13350 9100
+Connection ~ 13350 9100
+Text Notes 11875 10900 0    39   ~ 0
+Note: All information shown here is supplied "as is" with no warranty whatsoever, however, please let me know if there are any errors. 
+Text Notes 11875 10975 0    39   ~ 0
+All copyrights recognised. bprosman@gmail.com
+Text Notes 7325 10500 0    47   ~ 0
+1.0
+Text Notes 7625 10500 0    47   ~ 0
+Jan. 19, 2019
+Text Notes 8200 10500 0    47   ~ 0
+Final release
+Wire Wire Line
+	7650 1625 9350 1625
+Wire Wire Line
+	3825 4900 3825 7400
+Wire Wire Line
+	14075 7650 14575 7650
+Wire Bus Line
+	12475 5900 12475 6750
+Wire Bus Line
+	3825 6650 14250 6650
+Wire Bus Line
+	2475 6850 13875 6850
+Wire Bus Line
+	2375 5900 2375 6750
+Wire Bus Line
+	9100 950  9100 2800
+Wire Bus Line
+	3725 5800 3725 6550
+Wire Bus Line
+	7775 4300 7775 6550
+Wire Bus Line
+	10475 5500 10475 6750
+Wire Bus Line
+	13825 5800 13825 6550
+Wire Bus Line
+	11775 5800 11775 6550
+Wire Bus Line
+	14300 6700 14300 8350
+Wire Bus Line
+	9775 4300 9775 6550
+Wire Bus Line
+	5775 5800 5775 6550
+Wire Bus Line
+	13975 6450 13975 8850
+Wire Bus Line
+	8475 2900 8475 6750
+Wire Bus Line
+	6475 3700 6475 6750
+Wire Bus Line
+	4425 1000 4425 6750
+$EndSCHEMATC
