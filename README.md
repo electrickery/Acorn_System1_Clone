@@ -1,4 +1,4 @@
-# Acorn_System1_Revival
+# Acorn System1 Revival
 Kicad schematic design for those who want to revive an Acorn system 1. For the time being I will not design a PCB for it as I will concentrate on a System 5 clone based on more modern components.
 
 # License
