@@ -13,3 +13,18 @@ Kicad schematic design for those who want to revive an Acorn system 1. For the t
  * Bram Prosman
  * ---------------------------------------------------------------------------------
  */
+ 
+# Added data for this fork
+
+Creating a Acorn System 1 clone is somewhere on my wishlist. So far I updated the KiCAD 
+schema files to version 8, and added the monitor source from elsewhere.
+
+Very likely the hardware will be different, as the INS8154 RAM I/O is very rare and most of its 
+special features are not used. The NS1198 display is also not very common. These components will be
+replaced with R6522 VIA and generic 7-segment displays. 
+
+RAM and ROM will use more common 8kx8 devices.
+
+## Firmware
+
+The source of the firmware is https://theoddys.com/acorn/acorn_system_software/system_1_monitor/

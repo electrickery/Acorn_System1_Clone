@@ -1,0 +1,1491 @@
+;
+; ACORN System 1 Monitor and Applications
+;
+; This is the Acorn System 1 Monitor together with applications from the Acorn
+; System 1 User's and Teletext Board Technical Manuals and some other sources.
+;
+; (Chris Oddy December 2021)
+;
+; Assembled to load into a 4K EPROM.
+;
+		.setcpu			"6502"
+		.listbytes		unlimited
+		.org			$F000
+;
+; Code and comments are taken from the manuals with some corrections.
+;
+; The Monitor program (512 bytes) starts at $FE00.
+; The Applications are at $F000 onwards as follows:
+;
+; Mathematical Applications
+;	Square Root					entry point for decimal: $F000, hexadecimal: $F003
+;	Divider						entry point for decimal: $F03F, hexadecimal: $F042
+;	Single Byte Multiply		entry point: $F085
+;	Double Byte Multiply		entry point: $F0AA
+; System Applications
+;	Decimal to Hexadecimal		entry point: $F0F2
+;	Hexidecimal to Decimal		entry point: $F132
+;	Branch Offset Calculator	entry point: $F16D
+;	Relocator					entry point: $F1CD
+;	Tape Programs	TEST		entry point: $F1FB
+;					RETAG		entry point: $F203
+;	Scroll						entry point: $F23B
+;	VDU							entry point: $F249
+;	Acorn Keywrite				entry point: $F333
+;	Minidisassembler			entry point: $F361
+; Games
+;	Nim							entry point: $F3D8
+;	Duck Shoot					entry point: $F48C
+;	Bulls and Cows (Mastermind)	entry point: $F598	(code starts at $F4CC)
+; Miscellanous
+;	Counter	Keyboard			entry point: $F698
+;	Keyboard Counter Subroutine	entry point: $F6DB
+;	Metronome					entry point: $F6F2
+;	Eight Queens Problem		entry point: $F726
+;	'Acorn 1'					entry point: $F779
+;
+; MONITOR Zero Page Registers
+;
+MAP		:=		$00			; M Address
+GAP		:=		$02			; GO Address
+PAP		:=		$04			; Breakpoint Address
+FAP		:=		$06			; Tape From Address
+TAP		:=		$08			; Tape To Address
+R0		:=		$0A			; Register 0, A after Breakpoint
+R1		:=		$0B			; Register 1, X after Breakpoint
+R2		:=		$0C			; Register 2, Y after Breakpoint
+R3		:=		$0D			; Register 3, P after Breakpoint
+KEY		:=		$0D			; Last Pressed Key
+REPEAT	:=		$0E			; Single or Repeat Scan
+EXEC	:=		$0F			; Execution Status
+D		:=		$10			; Display Address
+R4		:=		$10			; Register 4, PCH after Breakpoint
+R5		:=		$11			; Register 5, PCL after Breakpoint
+R6		:=		$12			; Register 6
+R7		:=		$13			; Register 7
+P		:=		$18			; Breakpoint Storage
+COL		:=		$19			; Key Column
+TX		:=		$1A			; Temporary X Storage
+TY		:=		$1A			; Temporary Y Storage
+RECAL	:=		$1B			; Breakpoint Correction
+USERNMI	:=		$001C		; NMI Routine Address
+USERIRQ	:=		$001E		; IRQ Routine Address
+STACK	:=		$0100		; CPU stack
+;
+; Hardware Address's
+;
+PIA		:=		$0E20		; A Programmable I/O
+PIB		:=		$0E21		; B Programmable I/O
+ADDR	:=		$0E22		; A Data direction register
+BDDR	:=		$0E23		; B Data direction register
+;
+;	*** HEXADECIMAL/DECIMAL SQUARE ROOT ***
+;
+SQL		:=		$20
+SQH		:=		$21
+ROOT	:=		$22
+SUBL	:=		$23
+SUBH	:=		$24
+;
+SQRDEC:	sed					; entry point for decimal square root
+		beq		SQROOT		; always branch
+SQRHEX:	cld					; entry point for hexadecimal square root
+SQROOT:	sty		SQH			; clear square to prompt
+		sty		SQL
+		ldx		#SQL
+		jsr		QDATFET		; fetch the number whose root is to be found
+		sty		SUBH		; clear high part of subtracting number
+		sty		ROOT		; clear root
+		iny
+		sty		SUBL		; subtract 001 at start
+		ldy		SQL			; use Y & X as double sized accumulator
+		ldx		SQH
+NXTSUB:	sec					; subtract SUB from X & Y
+		tya
+		sbc		SUBL
+		tay
+		txa
+		sbc		SUBH
+		tax
+		bcc		RESLT1		; if negative then stop
+		lda		#$00		; not finished yet, increment root
+		adc		ROOT
+		sta		ROOT
+		lda		SUBL		; increment SUB
+		adc		#$02
+		sta		SUBL
+		lda		SUBH
+		adc		#$00
+		sta		SUBH
+		bcc		NXTSUB		; there can be no carry: branch always
+RESLT1:	lda		ROOT
+		jsr		RDHEXTD		; display answer
+		jmp		RESTART
+;
+;	*** DIVIDER ***
+;
+DIVIDR	:=	$20
+DIVISR	:=	$22
+RESULT	:=	$24
+;
+DIVDEC:	sed					; entry point for decimal divide
+		beq		DIVIDE		; always branch
+DIVHEX:	cld					; entry point for hexadecimal divide
+DIVIDE:	sty		DIVIDR		; clear dividend - prompt for number		
+		sty		DIVIDR+1
+		lda		#$11		; prompt for second number
+		sta		DIVISR
+		ldx		#$20
+		jsr		QDATFET		; fetch dividend
+		ldx		#$22
+		jsr		QDATFET		; fetch divisor
+		sty		RESULT		; clear result
+		sty		RESULT+1
+		ldy		DIVIDR		; use Y & X as double accumulator
+		ldx		DIVIDR+1
+SUB:	sec					; subtract the divisor
+		tya
+		sbc		DIVISR
+		tay
+		txa
+		sbc		#$00
+		tax
+		bcc		RESLT2		; if negative then finished
+		sty		DIVISR+1	; else update the remainder
+		lda		RESULT		; and add one to the result
+		adc		#$00		; (carry was set on input)
+		sta		RESULT
+		lda		RESULT+1
+		adc		#$00
+		sta		RESULT+1
+		bcc		SUB			; no carry is possible (usually)
+RESLT2:	ldx		#$24
+		jsr		QHEXTD1		; display result
+		lda		DIVISR+1
+		jsr		RDHEXTD		; and remainder
+		jmp		RESTART
+;
+;	*** SINGLE BYTE MULTIPLY ***
+;
+SMULT:	cld
+		nop
+		sty		$20			; setup prompt for zero multiplier
+		lda		#$11
+		sta		$21			; prompt for first - multiplicand
+		ldx		#$20
+		jsr		QDATFET		; fetch the numbers
+		tya					; clears A
+		ldy		#$08		; loop counter
+LOOP1:	ror		$20			; shift multiplier (and high byte of result)
+		bcc		NADS		; no add if not bit
+		clc
+		adc		$21			; add multiplicand into low byte of result
+NADS:	ror		A			; and shift low byte of result
+		dey
+		bne		LOOP1
+		sta		$21			; put in low byte
+		ror		$20			; final justification shift
+		jsr		QHEXTD1		; display answer
+		jmp		RESTART
+;
+;	*** DOUBLE BYTE MULTIPLY ***
+;
+MPIER	:=		$20
+MPICAND	:=		$22
+;
+DMULT:	cld					; binary only
+		sty		MPIER		; form prompt for the zero input
+		sty		MPIER+1
+		lda		#$11
+		sta		MPICAND		; form prompt for the first input
+		sta		MPICAND+1
+		ldx		#$20
+		jsr		QDATFET		; fetch zero input
+		ldx		#$22
+		jsr		QDATFET
+		sty		$24			; clear working space
+		sty		$25
+		ldy		#$10		; loop count initialisation
+LOOP2:	ror		MPICAND+1	; two byte shift right
+		ror		MPICAND
+		bcc		NADD		; no add if the o/p bit isn't a one
+		clc
+		lda		MPIER		; two byte add
+		adc		$24
+		sta		$24
+		lda		MPIER+1
+		adc		$25
+		sta		$25			; no carry out of the add
+NADD:	ror		$25			; shift again
+		ror		$24
+		dey
+		bne		LOOP2		; go round loop 16 times
+		ror		MPICAND+1
+		ror		MPICAND
+		ldy		#$06		; set up position
+		jsr		QHEXTD2		; X already pointing at correct locations
+							; put 4 hex out
+		ldy		#$02		; next position
+		ldx		#$24		; set up X
+		jsr		QHEXTD2		; put next 4 out
+		jmp		RESTART		; display result
+;
+;	*** DECIMAL TO HEXADECIMAL ***
+;
+DECL	:=		$20
+DECH	:=		$21
+DECVH	:=		$22
+;
+DECHEX:	tya					; clear A
+		sta		DECL		; clear No
+		sta		DECH
+		ldx		#DECL
+AGAIN1:	sta		DECVH		; fetch the first digit
+		jsr		HEXTD
+		jsr		DISPLAY
+		bcc		AGAIN1
+		jsr		QDATFET		; and then the last four digits
+		sed					; decimal mode
+		sty		D			; clear left display
+		ldx		DECH		; X & Y as double accumulator
+		tya
+		sta		DECH
+		ldy		DECL
+		sta		DECL
+NEXT1:	sec					; do a decimal subtract, double byte
+ALSO:	tya
+		sbc		#$01
+		tay
+		txa
+		sbc		#$00
+		tax
+		bcs		NODEC1
+		dec		DECVH		; last of the decimal subtract, to do 5 digits
+		bmi		RESLT3		; if minus then finished
+NODEC1:	inc		DECL		; double hex increment
+		bne		NEXT1
+		inc		DECH
+		sec					; create branch always, but don't bother to set the carry twice
+		bcs		ALSO
+RESLT3:	ldx		#$20
+		jsr		QHEXTD1		; display result
+		jmp		RESTART
+
+;
+;	*** HEXADECIMAL TO DECIMAL ***
+;
+HEXL	:=		$20
+HEXH	:=		$21
+DECOUT	:=		$22
+;
+HEXDEC:	sty		HEXL		; set up zero prompt
+		sty		HEXH
+		ldx		#HEXL
+		jsr		QDATFET		; and fetch the data
+		sed					; decimal mode
+		ldx		#$00		; set X & Y & DECOUT to zero
+		stx		DECOUT
+DECRHX:	lda		HEXL		; test for zero, then decrement
+		bne		NODEC2
+		lda		HEXH
+		beq		DEAD		; if hex No. zero, then finished
+		dec		HEXH
+NODEC2:	dec		HEXL
+		clc					; add 1 to decimal number,
+		tya					; using X & Y as two byte accumulator
+		adc		#$01
+		tay
+		txa
+		adc		#$00
+		tax
+		bcc		DECRHX
+		inc		DECOUT
+		bcs		DECRHX
+DEAD:	sty		HEXL		; finished, so store X & Y
+		stx		HEXH
+		ldx		#HEXL
+		jsr		QHEXTD1		; display 4 digits
+		dey
+		lda		DECOUT
+		jsr		HEXTD		; display 5th digit
+		jmp		RESTART
+;
+;	*** BRANCH OFFSET CALCULATOR ***
+;
+MESSL	:=		$20
+MESSH	:=		$21
+FROMH	:=		$22
+FROML	:=		$23
+TOL		:=		$24
+TOH		:=		$25
+;
+OFFSET:	cld
+AGAIN2:	lda		#$02
+		sta		MESSH		; initialise message pointer
+		sty		FROMH		; setup prompt
+		sty		FROML
+		ldx		#FROMH
+		jsr		QDATFET		; fetch first address
+		lda		#$11		; set up 2nd prompt
+		sta		TOL
+		sta		TOH
+		ldx		#TOL
+		jsr		QDATFET		; fetch second adress
+		lda		FROMH		; offset to make overlength easy
+		sbc		#$7E		; carry known set by QDATFET
+		sta		FROMH
+		bcs		HSUB		; don't set the carry again
+		dec		FROML
+		sec
+HSUB:	lda		TOL			; calculate the length
+		sbc		FROMH
+		tax
+		lda		TOH
+		sbc		FROML
+		bne		TOOFAR
+		lda		#$51
+		jsr		MESSAGE		; print out
+		txa
+		eor		#$80		; complement top bit because of the offset applied
+		jsr		RDHEXTD		; print out answer, over writing the
+		jmp		RESTART		; finished
+TOOFAR:	lda		#$57		; whoops
+		jsr		MESSAGE		; tell the programmer that its wrong
+		jmp		AGAIN2
+MESSAGE:sta		MESSL		; message described by A
+		ldy		#$07		; eight bytes of data to display
+LOOP3:	lda		(MESSL),y	; fetch them
+		sta		D,y
+		dey
+		bpl		LOOP3
+		rts
+		.byte	$5C,$71,$71,$ED,$79,$78,$78,$5C
+		.byte	$5C,$00,$71,$77,$50,$00
+;
+;	*** RELOCATOR ***
+;
+RELOC:	ldx		#$F1
+		stx		D			; setup from prompt F.
+		ldx		#$20
+		jsr		QDATFET		; and get address
+		ldx		#$46
+		stx		D			; setup end prompt
+		ldx		#$22
+		jsr		QDATFET		; and get second address
+		ldx		#$78		; move the data between these addresses
+		stx		D			; setup prompt
+		ldx		#$24
+		jsr		QDATFET		; and get base address
+		ldx		#$1A		; move to here & successive locations
+MOVE:	lda		($06,x)		; do the move
+		sta		($24),y
+		iny
+		bne		NOINC2
+		inc		$25
+NOINC2:	jsr		COM16		; use COM16 to do the limit test
+		bne		MOVE
+		jmp		RESTART
+;
+;	*** TAPE USE PROGRAMS ***
+;
+TEST:	lda		#$55		; the test byte
+		jsr		PUTBYTE		; send it
+		jmp		TEST		; keep sending it
+;
+RETAG:	lda		#$F1		; F. prompt
+		sta		D
+		ldx		#$06
+		jsr		QDATFET		; first address
+		ldx		#$08
+		stx		D			; prompt
+		jsr		QDATFET		; second address
+		lda		#$46		; prompt
+		sta		D
+		ldx		#$20
+		jsr		QDATFET		; last address: actual data start
+		ldx		#$04
+ADRSS:	lda		$05,x		; send fake address
+		jsr		PUTBYTE
+		dex
+		bne		ADRSS
+DATAS1:	ldy		#$00
+		lda		($20),y		; proper data
+		inc		$20			; increment proper data counter
+		bne		NOINC3
+		inc		$21
+NOINC3:	jsr		PUTBYTE		; send data
+		jsr		COM16		; check fake addresses for end
+		bne		DATAS1
+		jmp		RESTART
+;
+;	*** SCROLL ***
+;
+SCROLL:	ldx		#$00		; must go forwards
+LOOP4:	ldy		D+1,x		; pick-up data on right
+		sty		D,x			; & move it one left
+		inx
+		cpx		#$07
+		bne		LOOP4		; keep going
+		sta		D+1			; new data
+		rts
+;
+;	*** VDU *** (from Teletext Board Technical Manual)
+;
+LF		:=		$0A			; LineFeed
+FF		:=		$0C			; FormFeed
+CR		:=		$0D			; Carriage Return
+DEL		:=		$7F			; DELete
+SCAP	:=		$20
+LINE	:=		$21
+WORK	:=		$23
+SCRA	:=		$0400		; memory addresses for the screen
+SCRB	:=		$0500
+SCRC	:=		$0600
+SCRD	:=		$0700 
+CRTA	:=		$0800		; 6845 crt controller
+CRTB	:=		$0801
+;
+VDU:
+CHATS:	ldy		SCAP		; CHAracter To Screen
+		cmp		#$20
+		bcc		CTL			; all control characters
+		cmp		#DEL
+		beq		DELETE
+TOSCRN:	jsr		WRCH
+		iny
+		cpy		#$28
+		bcc		VDUB		; automatic scroll when line filled
+FILLED:	jsr		SCROLL
+VDUA:	ldy		#$00
+VDUB:	jsr		CALCN
+		sty		SCAP
+		ldy		#$0F		; rewrite cursor position
+		sty		CRTA
+		ldy		WORK
+		sty		CRTB
+		ldy		#$0E
+		sty		CRTA
+		ldy		WORK+2
+		sty		CRTB
+VDUC:	rts
+
+DELETE:	dey
+		bmi		VDUC		; refuse to delete before line start
+		lda		#$20		; write in a blank
+		jsr		WRCH
+		lda		#$7F
+		bne		VDUB
+CTL:	cmp		#CR			; carriage return ?
+		beq		VDUA
+		cmp		#LF			; linefeed ?
+		beq		SCR
+		cmp		#FF			; formfeed ?
+		beq		CLEARS
+		bne		TOSCRN
+SCR:	jsr		SCROL		; scroll screen and rewrite cursor
+		ldy		SCAP
+		bcs		VDUB
+CLEARS:	pha					; clear entire buffer
+		ldy		#$00
+		lda		#$20
+CLR:	sta		SCRA,y
+		sta		SCRB,y
+		sta		SCRC,y
+		sta		SCRD,y
+		iny
+		bne		CLR
+		sty		SCAP
+		ldy		#$0F
+SETCRT:	sty		CRTA		; set up all the crt parameters
+		lda		CRTTAB,y
+		sta		CRTB
+		dey
+		bpl		SETCRT
+		lda		#$C0
+		sta		LINE
+		lda		#$07
+		sta		LINE+1
+		pla
+		rts
+;
+SCROL:	php					; scroll subroutine
+		pha
+		cld
+		ldy		#$28
+		jsr		CALCN
+		lda		WORK
+		sta		LINE
+		lda		WORK+2
+		sta		LINE+1
+		ldy		#$0D
+		sty		CRTA
+		lda		LINE
+		SEC
+		SBC		#$C0
+		sta		CRTB
+		dey
+		sty		CRTA
+		lda		WORK+2
+		SBC		#$03
+		sta		CRTB
+		ldy		#$27
+		lda		#$20
+CLEARL:	jsr		WRCH
+		dey
+		bpl		CLEARL
+		pla
+		plp
+		rts
+
+CALCN:	php					; do calculation to make sure that the
+		pha					; processor and crt controlier agree on
+		cld					; position of screen
+		clc
+		tya
+		adc		LINE
+		sta		WORK
+		lda		LINE+1
+		adc		#$00
+		sta		WORK+2
+		and		#$07
+		ora		#$04
+		sta		WORK+1
+		pla
+		plp
+		rts
+
+WRCH:	jsr		CALCN
+		sty		WORK+2
+		ldy		#$00
+		sta		WORK,y
+		ldy		WORK+2
+		rts
+;
+CRTTAB:	.byte	$3F			; total number of characters per line
+		.byte	$28			; 40 characters displayed
+		.byte	$33			; position of horizontal sync
+		.byte	$05			; width in uS of horizontal sync pulse
+		.byte	$1E			; total number of character rows
+		.byte	$02			; additional no. of lines for 312 total
+		.byte	$19			; 25 displayed character  rows
+		.byte	$18			; position of vertical sync pulse
+		.byte	$00			; set non-interlace mode
+		.byte	$09			; set 10 lines per character row
+		.byte	$68			; slow blink cursor from line 9
+		.byte	$09			; to line 10
+		.byte	$04			; high address of VDU ram
+		.byte	$00			; low address of VDU ram
+		.byte	$07			; high address of initial cursor position
+		.byte	$C0			; low address of intial cursor position
+;
+;	*** Acorn Keywrite *** (from Teletext Board Technical Manual)
+;
+TEMP	:=		$26
+;
+KEYWRT:	jsr		DISPLAY
+		bcc		SEND		; hex key ?
+CONTRL:	and		#$07
+		beq		RET
+		tay					; look up control keys in table
+		lda		TABLE-1,y
+SENDER:	jsr		CHATS
+		jmp		KEYWRT
+SEND:	asl		A
+		asl		A
+		asl		A
+		asl		A
+		sta		TEMP
+		jsr		DISPLAY
+		bcs		CONTRL
+		ora		TEMP		; mix in low digit
+		ora		#$80		; fool control character check
+		bmi		SENDER		; forced branch to SENDER
+RET:	jmp		RESTART		; M key returns to MONITOR
+TABLE:	.byte	$20			; G key gives space bar
+		.byte	$20			; P key gives space bar
+		.byte	$20			; S key gives space bar
+		.byte	$0A			; L key gives linefeed
+		.byte	$0C			; R key gives formfeed
+		.byte	$7F			; <up> key gives delete
+		.byte	$0D			; <down> key gives carriage return
+;
+;	*** Minidisassembler *** (from Teletext Board Technical Manual)
+;
+MOD		:=		$00
+COUNT1	:=		$0E
+;
+DISASS:	lda		#$18		; disassemble 25 lines
+		sta		COUNT1
+		cld
+		lda		#$0C		; start with a formfeed
+		jsr		CHATS
+MAIN1:	lda		#$0D		; carriage return/linefeed for each line
+		jsr		CHATS
+		lda		#$0A
+		jsr		CHATS
+		lda		MOD+1		; display current address
+		jsr		SPBYTE
+		lda		MOD
+		jsr		BYTOUT
+		ldy		#$00
+		ldx		#$01		; X will be the byte count of the opcode
+		lda		MOD,y		; fetch opcode, find it’s no. of bytes
+		cmp		#$20		; ‘jsr' is an anomaly and is done first
+		beq		CBYTE
+		and		#$9F
+		beq		ABYTE		; binary 0XX00000 is 1 byte
+		and		#$1D
+		cmp		#$19
+		beq		CBYTE		; binary XXX110X1 is 3 bytes
+		and		#$0D
+		cmp		#$08
+		beq		ABYTE		; binary XXXXX0X0 (now) is 1 byte
+		and		#$0C
+		cmp		#$0C
+		beq		CBYTE		; binary XXXX11XX is 3 bytes
+		dex					; all others are 2 bytes
+CBYTE:	inx
+		inx
+ABYTE:	ldy		#$00
+		lda		MOD,y
+		jsr		SPBYTE
+		inc		MOD			; increment the byte pointer
+		bne		NOINC4
+		inc		MOD+1
+NOINC4:	dex					; print all bytes required
+		bne		ABYTE
+		dec		COUNT1
+		bpl		MAIN1		; finished the 25 lines ?
+GETOUT:	jmp		RESTART
+SPBYTE:	pha					; print a space and then the byte
+		lda		#$20
+		jsr		CHATS
+		pla
+BYTOUT:	pha					; print a byte
+		lsr		A
+		lsr		A
+		lsr		A
+		lsr		A
+		jsr		DIGOUT
+		pla
+DIGOUT:	and		#$0F		; print the bottom hex digit in A
+		ora		#$30
+		cmp		#$3A
+		bcc		PUT
+		adc		#$06
+PUT:	jmp		CHATS
+;
+;	*** NIM ***
+;
+COUNT2	:=		$1F
+NSTACK	:=		$20
+POSS	:=		$24
+ANAL	:=		$28
+;
+HUMMOV:	jsr		DSPGAP		; display stacks
+SHFTPT:	lda		D,x			; set decimal point on
+		ora		#$80
+		sta		D+1,x
+CHEAT:	jsr		DISPLAY		; wait for input
+		bcc		MINUS
+		lda		D+1,x		; remove current decimal point
+		and		#$7F
+		sta		D+1,x
+		inx					; move forward
+		inx
+		cpx		#$07		; end of stacks ?
+		bcc		SHFTPT
+		ldx		#$00
+		beq		SHFTPT
+MINUS:	tay
+		beq		CHEAT		; prevent zero from being used
+		txa
+		lsr		A			; address of required stack
+		tax
+		sec
+		lda		NSTACK,x	; do the players move
+		sbc		KEY
+		sta		NSTACK,x
+COMMOV:	jsr		DSPGAP		; show stacks
+		sty		REPEAT
+		ldx		#$00
+WAIT1:	jsr		DISPLAY		; thinking time
+		dex
+		bne		WAIT1
+		dex
+		stx		REPEAT		; clear repeat status
+		ldy		#$03
+NEXT2:	ldx		#$03		; transfer STACK to POSS
+BLOCK:	lda		NSTACK,x	; POSS repreensts the possible computer
+		sta		POSS,x		; moves
+		dex
+		bpl		BLOCK
+ONEOFF:	ldx		#$03		; transfer POSS to ANAL
+BRICK:	lda		POSS,x		; ANAL represents the move being
+		sta		ANAL,x		; analysed
+		dex
+		bpl		BRICK
+		ldx		#$03
+		lda		POSS,y
+		sec
+		sbc		#$01
+		sta		POSS,y		; POSS contains possible move
+		sta		ANAL,y		; ANAL contains possible move
+		bcs		CHECK
+		dey
+		bpl		NEXT2		; try all stacks
+TRY1:	lda		NSTACK,x	; check if stack is empty
+		beq		EMPTY
+		dec		NSTACK,x	; make desperate move
+		jmp		HUMMOV
+EMPTY:	dex
+		bpl		TRY1
+		jmp		RESTART		; lost
+CHECK:	lda		#$04
+		sta		COUNT2
+CONT:	lda		#$00		; evaluate move
+		lsr		ANAL
+		rol		A
+		lsr		ANAL+1
+		adc		#$00
+		lsr		ANAL+2
+		adc		#$00
+		lsr		ANAL+3
+		adc		#$00
+		lsr		A
+		bcs		ONEOFF		; not a good move
+		dec		COUNT2
+		bne		CONT		; keep checking the move
+		ldx		#$03		; good move, transfer to actual stacks
+BAT:	lda		POSS,x
+		sta		NSTACK,x
+		dex
+		bpl		BAT
+		jmp		HUMMOV		; opponent
+DSPGAP:	lda		#$00
+		ldx		#$07
+CLEAR1:	sta		D,x			; clear the display first
+		dex
+		bpl		CLEAR1
+		cld					; clear decimal mode
+		ldx		#$04
+		ldy		#$07
+AROUND:	lda		NSTACK-1,x
+		jsr		HEXTD
+		dey
+		dey
+		dex
+		bne		AROUND
+		ldy		#$1F
+		rts
+;
+;	*** DUCK SHOOT ***
+;
+TIME	:=		$0E
+DEDDCK	:=		$1C
+DUCK	:=		$61
+;
+BEGIN:	lda		#$1F		; single scan display routine
+		sta		TIME
+		lda		#$00		; clear the display
+		ldx		#$07
+		stx		$20
+CLEAR2:	sta		$10,x
+		dex
+		bpl		CLEAR2
+REMOVE:	lda		#$00		; take the old duck off
+		ldx		$20
+		sta		$10,x
+INSERT:	lda		#DUCK		; put new duck on
+		dex					; in new position
+		bpl		OLDX		; but not over the end of the display
+		ldx		#$07
+OLDX:	sta		$10,X
+		stx		$20
+		ldx		#TIME		; display interval is set by the byte loaded into X
+WAIT2:	jsr		DISPLAY
+		cmp		$20			; hit ?
+		beq		HIT
+		dex
+		bne		WAIT2
+		beq		REMOVE		; finished wait time
+HIT:	lda		#DEDDCK		; put in a dead duck
+		ldx		$20
+		sta		$10,x
+		lda		#$FF
+		sta		TIME
+		jsr		DISPLAY		; test for continuation
+		bcc		BEGIN
+		jmp		RESTART		; or back to the Monitor
+;
+;	*** BULLS and COWS (MASTERMIND) *** (from the Liverpool Software Gazette)
+;
+MESSPO	:=		$0020		; pointer to messages
+RAN		:=		$0022		; random numbers here
+MYNO	:=		$0025		; hidden Acorn's number
+YGU		:=		$0027		; humans guess
+NUMA	:=		$0029		; number to be matched
+NUMB	:=		$002D		; number to be matched with
+BULLS	:=		$0031
+COWS	:=		$0032
+LIST	:=		$0033		; used to calculate cows
+MYGU	:=		$003B		; my new guess
+STRT	:=		$003D		; start of guesses
+ANSWER	:=		$003F		; answer from piran
+GSEND	:=		$0040		; end of guess stack
+GUNO	:=		$0041		; present guess on stack
+TEMPA	:=		$0042		; two temporary locatiosn for ROR
+TEMPB	:=		$0043
+;
+MATCH:	lda		#$00
+		ldx		#$09		; clear bulls, cows
+CLEAR:	sta		BULLS,X		; and list
+		dex
+		bpl		CLEAR
+		ldy		#$03
+CMPARE:	lda		NUMA,Y		; digit from NUMA
+		cmp		NUMB,Y		; is it a bull ?
+		bne		NOBULL		; no
+		inc		BULLS		; count a bull
+		bpl		NOCOWS		; it can't be a cow
+NOBULL:	tax					; is it a cow then ?
+		inc		LIST,X		; increment via digit
+		beq		COWCNT		; it is a cow
+		bpl		NOCOW		; it is not a cow
+COWCNT:	inc		COWS		; count a cow
+NOCOW:	ldx		NUMB,Y		; try other way
+		dec		LIST,X		; decrement via digit
+		bmi		NOCOWS		; it is not a cow
+		inc		COWS		; count a cow
+NOCOWS:	dey					; next digit
+		bpl		CMPARE		; round again
+		lda		BULLS		; now assemble answer
+		asl		A
+		asl		A
+		asl		A
+		asl		A
+		ora		COWS
+		rts					; and return
+UNPACK:	lda		$0000,Y		; put number
+		sta		TEMPA		; to be unpacked
+		lda		$0001,Y		; in TEMPA
+		ldy		#$04		; (4 digits to unpack)
+UNLOOP:	sta		TEMPB		; and TEMPB
+		and		#$07		; extract digit
+		sta		$00,X		; save unpacked form
+		lda		TEMPB		; reload lower byte
+		ror		TEMPA		; 2-byte 3-bit rotate
+		ror		A
+		ror		TEMPA
+		ror		A
+		ror		TEMPA
+		ror		A
+		inx					; next digit
+		dey					; Y is a counter
+		bne		UNLOOP		; round again
+		rts					; and return
+DISRAN:	lda		#$1F		; set single scan
+		sta		REPEAT
+DESCAN:	jsr		DISPLAY		; monitor scan call
+		eor		#$1F		; key ?
+		bne		KEYFO		; yes
+		lda		RAN+2		; generate random
+		and		#TEMPA		; numbers, next bit in
+		adc		#STRT+1		; bit six of A
+		asl		A			; and put in carry
+		asl		A
+		rol		RAN			; now rotate the bits
+		rol		RAN+1		; round the 3 bytes
+		rol		RAN+2
+		jmp		DESCAN		; and round again
+KEYFO:	bcc		NORET		; cont or key ?
+		rts					; yes so return
+NORET:	lda		ANSWER		; digit key so
+		asl		A			; assemble new answer
+		asl		A			; last digit up 4 bits
+		asl		A
+		asl		A
+		ora		KEY			; put in new digit
+		sta		ANSWER		; store in ANSWER
+		jsr		RDHEXTD		; A to display
+		jmp		DESCAN		; and round again
+MSSAGE:	lda		#$FF		; message to display
+		sta		REPEAT		; set scan mode for QOCTFE
+		stx		MESSPO		; setup pointer
+		ldy		#$07		; 8 digits to fetch
+MLOOP:	lda		(MESSPO),Y	; post index fetch
+		sta		D,Y			; put in display buffer
+		dey					; next digit
+		bpl		MLOOP		; round again
+SUBRET:	rts					; or return
+QOCTFE:	jsr		QOCTTD		; display old
+		jsr		DISPLAY		; MONITOR scan call
+		bcs		SUBRET		; control key return
+		ldy		#$03		; 3 bits to shift
+		and		#$07		; keys range 0 to 7
+SHIFT:	asl		$01,X		; this is the 3
+		rol		$00,X		; bit shift
+		dey
+		bne		SHIFT
+		ora		$01,X		; put new key in
+		sta		$01,X		; store new entry
+		jmp		QOCTFE		; and round again
+QOCTTD:	ldy		#$04		; 4 octal
+		lda		$00,X		; digits to display
+		sta		TEMPA		; use TEMPA and TEMPB
+		lda		$01,X
+DISLOP:	sta		TEMPB		; save lower byte
+		and		#$07		; mask digit
+		jsr		HEXTD		; digit to display buffer
+		lda		TEMPB		; reload lower byte
+		ror		TEMPA		; now 3-bit 2-byte
+		ror		A			; rotate
+		ror		TEMPA
+		ror		A
+		ror		TEMPA
+		ror		A
+		dey					; next digit
+		bne		DISLOP		; and round again
+		rts					; or return
+MBEGIN:	lda		#$FF
+		sta		RAN
+MstaRT:	lda		#$44		; reset stack end
+		sta		GSEND
+		lda		#$03		; set mess pointer
+		sta		MESSPO+1
+		ldx		#$A7		; message ready
+		jsr		MSSAGE
+		jsr		DISRAN		; display ready
+		lda		RAN+1		; put random number
+		sta		MYNO+1		; as my number
+		lda		RAN
+		and		#$0F
+		sta		MYNO
+YOUGO:	ldx		#$C2		; clear display
+		jsr		MSSAGE
+		lda		#$FF		; set scan mode
+		sta		REPEAT
+		ldx		#YGU		; fetch your guess
+		jsr		QOCTFE
+		ldx		#NUMA		; num number to NUMA
+		ldy		#MYNO
+		jsr		UNPACK
+		ldx		#NUMB		; your number to NUMB
+		ldy		#YGU
+		jsr		UNPACK
+		jsr		MATCH		; and compare them
+		cmp		#GSEND		; four bulls !!?
+		bne		NOWIN		; phew !!
+		ldx		#$B4		; drat you
+ENDOUT:	jsr		MSSAGE		; end of game
+		jsr		DISRAN		; display message
+		ldx		#$C2		; clear display
+		jsr		MSSAGE
+		ldx		#MYNO
+		jsr		QOCTTD
+		jsr		DISRAN
+		jmp		START		; ready to play again
+NOWIN:	jsr		RDHEXTD		; MONITOR A to display
+		jsr		DISRAN		; display bulls/cows
+		lda		RAN			; random number is my guess
+		and		#$0F		; and rememeber where we are
+		sta		MYGU		; start
+		sta		STRT
+		lda		RAN+1
+		sta		MYGU+1
+		sta		STRT+1
+NEWGU:	ldy		#MYGU
+		ldx		#NUMB		; unpacked to NUMB
+		jsr		UNPACK
+		ldy		#$44		; reset guess pointer
+NEWINF:	cpy		GSEND		; end of stack ?
+		sty		GUNO		; store guess pointer
+		beq		FOUND		; yes stack finished
+		ldx		#NUMA		; stacked guess
+		jsr		UNPACK		; unpacked to NUMA
+		jsr		MATCH		; compare new answer
+		ldy		GUNO		; with old answers
+		cmp		$0002,Y
+		bne		NOGOOD		; does not fit
+		iny					; next stack entry
+		iny
+		iny
+		bne		NEWINF		; try this entry
+NOGOOD:	inc		MYGU+1		; increment
+		bne		NOTUP		; my guess as the last
+		inc		MYGU		; one was no good
+		lda		MYGU
+		and		#$0F
+		sta		MYGU
+NOTUP:	lda		MYGU+1		; if we count
+		cmp		STRT+1		; round to the start
+		bne		NEWGU		; then somebody is
+		lda		MYGU		; cheating otherwise
+		cmp		STRT		; try this new guess
+		bne		NEWGU
+		ldx		#$BC		; you rotter
+		bne		ENDOUT		; end of game
+FOUND:	lda		MYGU		; put this good
+		sta		$0000,Y		; on the stack
+		lda		MYGU+1
+		sta		$0001,Y
+		ldx		#$C4		;"......__“ to display
+		jsr		MSSAGE
+		ldx		#MYGU		; my guess to display
+		jsr		QOCTTD
+		jsr		DISRAN		; use DISRAN to get answer
+		lda		ANSWER
+		cmp		#GSEND		; 4 bulls ? I win
+		bne		NOIWIN		; no not yet I don't
+		ldx		#$AD		; message and end game
+		jmp		ENDOUT
+NOIWIN:	ldy		GUNO		; put answer on stack
+		sta		$0002,Y
+		iny					; update stack end
+		iny
+		iny
+		sty		GSEND
+		jmp		YOUGO		; and round again
+;
+READY:	.byte	$00,$50,$79,$77,$5E,$6E
+IWIN:	.byte	$00,$00,$06,$00,$1C,$04,$54
+YOUWIN:	.byte	$00,$6E,$3F,$3E,$00,$1C,$04,$54
+MCHEAT:	.byte	$00,$39,$76,$79,$77,$78
+BLANK:	.byte	$00,$00
+PROMPT:	.byte	$00,$00,$00,$00,$00,$00,$08,$08
+;
+;	*** COUNTER KEYBOARD ***
+;
+COUNT	:=		$19
+;
+DISP:	jsr		DISPLAY		; look for key
+		bcc		CHANGE		; check if control key carry set if so
+		cmp		#$17
+		beq		DOWN1
+		cmp		#$16
+		beq		UP1
+		bne		DISP
+CHANGE:	cmp		#$00
+		sta		COUNT
+MORE:	beq		DISP		; increment No. of times of TEY
+		jsr		INCR
+		dec		COUNT
+		bpl		MORE
+		bmi		DISP
+UP1:	jsr		INCR		; rapid increment
+		jsr		ZOOM
+		bne		DISP
+		beq		UP1
+DOWN1:	jsr		DECR		; rapid decrement
+		jsr		ZOOM
+		bne		DISP
+		beq		DOWN1
+ZOOM:	lda		#$1F
+		sta		$0E			; set for one scan only
+		jsr		DISPLAY
+		bcc		STOP		; check if key depressed claer if one is
+		lda		#$00
+		rts
+STOP:	lda		#$FF		; reset so that jsr DISPLAY waits for input
+		sta		$0E
+		rts
+;
+;	*** COUNTER KEYBOARD SUBROUTINE ***
+;
+CNTL	:=		$1A
+CNTH	:=		$1B
+;
+INCR:	inc		CNTL,x
+		bne		UPDATE
+		inc		CNTH
+		sec
+		bcs		UPDATE
+DECR:	lda		CNTL
+		bne		NOT
+		dec		CNTH
+NOT:	dec		CNTL
+UPDATE:	ldx		#$1A
+		jsr		QHEXTD1
+		rts
+;
+;	*** METRONOME ***
+;
+PERIOD	:=		$20
+CLRPA6	:=		$0E06			; clear bit 6 of PIA
+SETPA6	:=		$0E16			; set bit 6 of PIA
+;
+METRO:	lda		#$1F
+		sta		REPEAT		; set display to single scan
+PULSE:	lda		#$40
+		sta		ADDR		; define PA6 as output
+		sta		SETPA6		; use the INS8154 set bit mode
+		jsr		WAIT		; use the 300 baud wait
+		sta		CLRPA6		; use the INS8154 clear bit mode
+		ldx		PERIOD
+DEL2:	jsr		DISPLAY		; look at keyboard
+		cmp		#$16		; up key ?
+		bne		DOWN2		; no
+		inc		PERIOD		; decrease PERIOD
+		bcs		PULSE		; carry was set by the compare: always
+DOWN2:	cmp		#$17		; down key ?
+		bne		DELI		; no
+		dec		PERIOD		; decrease PERIOD
+		bcs		PULSE		; carry was set by the compare: always
+DELI:	ldy		#$0C		; cycle time of u1/2 seconds
+DELJ:	jsr		WAIT
+		dey
+		bpl		DELJ
+		dex
+		bne		DEL2
+		beq		PULSE		; end of this period so pulse
+;
+;	*** EIGHT QUEENS PROBLEM ***
+;
+ROW		:=		$20
+LEFT	:=		$29
+RIGHT	:=		$32
+;
+QUEENS:	sed
+		ldx		#$20
+		sty		COUNT		; clear count
+		sty		ROW			; clear row occupied
+		sty		LEFT		; clear left diagonal attacks
+		sty		RIGHT		; clear right diagonal attacks
+		jsr		TRY2		; find the No. of ways
+		lda		COUNT
+		jsr		RDHEXTD		; display answer
+		jmp		RESTART
+TRY2:	lda		$00,x		; finished yet ?
+		cmp		#$FF
+		bne		CONTIN
+		lda		COUNT		; finished, so increment count
+		adc		#$00
+		sta		COUNT
+FINISH:	rts
+CONTIN:	ora		$09,x		; current left
+		ora		$12,x		; current right
+LOOP5:	tay
+		eor		#$FF
+		beq		FINISH		; no chance
+		sta		$1B,x		; current possible place
+		iny
+		tya
+		and		$1B,x
+		tay
+		ora		$00,x
+		sta		$01,x		; new row
+		tya
+		ora		$09,x
+		asl		A
+		sta		$0A,x		; new left attack
+		tya
+		ora		$12,x
+		lsr		A
+		sta		$13,x		; new right attack
+		inx
+		jsr		TRY2
+		dex
+		lda		$01,x
+		eor		#$FF
+		and		$1B,x
+		eor		#$FF
+		jmp		LOOP5
+;
+;	*** 'Acorn 1' *** (mikes on Stardot)
+;
+ACORN1:	ldx		#$07
+LOOP6:	lda		MESAGE,X
+		sta		D,X
+		dex
+		bpl		LOOP6
+		jsr		DISPLAY
+		jmp		INIT
+;
+MESAGE:	.byte	$00,$77,$58,$5c,$50,$54,$00,$30
+;
+;		Fill space with FF's
+;
+		.listbytes	4
+		.repeat		$66E
+		.byte		$FF
+		.endrep
+		.byte		$FF
+		.listbytes	unlimited
+;
+;	*** Acorn System 1 'Monitor' ***
+;
+		.org	$FE00
+;
+QUAD:	ldy		#$06		; display the 4-bytes at X-3, X-2,
+							; X-1 & X in that order on the display
+STILL:	lda		0,X			; get the byte pointed to by X
+		jsr		DHEXTD		; use double hex to display routine
+		dex					; next X
+		dey					; next Y position
+		dey
+		bpl		STILL		; fall auto display when finished - Y position
+							; & also loop counter
+;
+DISPLAY:stx		TX			; save X!!!!
+RESCAN:	ldx		#$07		; scan 8 digits, no matter what
+		stx		ADDR		; set up data direction register
+SCAN:	ldy		#$00		; clear Y for later use
+		lda		D,X			; get display data from the zero page memory
+		sta		PIB			; & put it onto segments
+		stx		PIA			; set digit drive on and the key columns
+		lda		PIA			; get key digit back
+		and		#$3F		; remove surplus top bits
+		bit		EXEC		; check status ='1' means not processing a key
+		bpl		BUTTON		; but 0 means that we are thus can be blown to an
+							; escape from the display routine altogther on status
+							; C0 at the moment it ignores keys if given this status
+		cmp		#$38		; check for all 1's row input
+							; from keyboard = set copy if so
+		bcs		DELAY		; if all 1's then no key has been pressed
+		stx		COL			; store the pressed key's column information
+		lda		#$40		; set status to "we are processing a key"
+KEYCLR:	sta		EXEC
+DELAY:	lda		(0,X)
+		dey					; Y was zero so here is a 256x5uS delay
+		bne		DELAY		; Y will be zero on exit
+		dex
+		bpl		SCAN		; if X was still +ve, continue this scan
+		lda		REPEAT		; if we should continue scanning then top bit is set
+		bmi		RESCAN		; continue scanning
+		bpl		OUTPUT		; if top bit is zero, then use this data as the key itself
+BUTTON:	cpx		COL			; are we on the same key's column ?
+		bne		DELAY		; no
+		cmp		#$38		; has a key actually been pressed ?
+		bcc		PRESSED		; yes
+		lda		#$80		; no, then clear the execution status -
+							; the key has been pressed & released
+		bne		KEYCLR		; always branch
+PRESSED:cmp		EXEC		; a key has been pressed
+		beq		DELAY		; but it has already been executed
+		sta		EXEC		; set it as being executed
+		eor		#$38		; jiggery pokery to encode the row inputs to binary
+OUTPUT:	and		#$1F		; also ensure the key in repeat was of reasonable size
+		cmp		#$10		; a hex key or not ? carry clear if hex
+		sta		KEY			; put the key in a temp location for further use (by "modify")
+		ldx		TX			; retrieve X
+		sty		PIB			; turn the segment drives off
+		rts					; and return
+
+MHEXTD:	lda		(0,X)		; Memory HEX To Display = get a byte from memory
+RDHEXTD:ldy		#$06		; right (of display) double hex
+							; to display :set Y to right of display
+		bne		DHEXTD		; and use DHEXTD
+;
+QHEXTD1:ldy		#$03		; Quad HEX To Display 1: set Y to use posns 1,2,3 & 4
+;
+QHEXTD2:lda		0,X			; Quad HEX To Display 2: use any Y: get the data
+		jsr		DHEXTD		; and use DHEXTD
+		dey
+		dey					; having decremented the position
+		lda		1,X			; get the high byte of the data & use DHEXTD
+;
+DHEXTD:	iny					; Double HEX To Display :first hex on rightest position
+		pha					; save A
+		jsr		HEXTD		; use hex to display
+		dey					; get Y back to correct position
+		pla					; retrieve A
+		lsr		A
+		lsr		A
+		lsr		A
+		lsr		A			; orientated for other hex digit
+;
+HEXTD:	sty		TY			; HEX To Display = save Y
+		and		#$0F		; remove surplus bits from A
+		tay					; & put it in Y
+		lda		FONT,Y		; get the 7-segment form
+		ldy		TY			; retrieve Y
+		sta		D,Y			; and position the 7-segment form on the display
+		rts
+;
+QDATFET:jsr		QHEXTD1		; Quad DATa FETch - display old data
+		jsr		DISPLAY		; get key
+		bcs		RETURN		; non hex return
+		ldy		#$04		; loop counter
+		asl		A
+		asl		A
+		asl		A
+		asl		A			; digit in A in correct place
+SHIFTIN:asl		A			; multi-shift to get digit into memory
+		rol		0,X			; indexed
+		rol		1,X
+		dey
+		bne		SHIFTIN		; keep shifting in
+		beq		QDATFET		; go and do it all again
+;
+COM16:	inc		$06,X		; increment & COMpare 16-bit numbers - increment lower
+		bne		NOINC		; no high increment
+		inc		$07,X
+NOINC:	lda		$06,X		; low byte equality test
+		cmp		$08,X
+		bne		RETURN		; no need to do high byte
+		lda		$07,X		; high byte equality test
+		cmp		$09,X
+RETURN:	rts
+
+PUTBYTE:ldy		#$40		; PUT BYTE to tape - configure i/o port
+		sty		ADDR
+		ldy		#$07		; loop counter
+		sty		PIA			; and send the start bit
+		ror		A
+		ror		A			; back up a couple of bits
+AGAIN:	jsr		WAIT		; wait to send out reset bit
+		ror		A			; sending order is bit 0 -> bit 7
+		sta		PIA			; send bit
+		dey
+		bpl		AGAIN		; keep going
+		jsr		WAIT		; wait for that bit to end
+		sty		PIA			; send stop bit : Y is FF
+;
+WAIT:	jsr		HAFWAIT		; 300 baud WAITing time - in two parts
+;
+HAFWAIT:sty		TY			; HAlF the WAITing time - save Y
+		ldy		#$48		; 72 X 5uS delay
+WAIT3:	dey					; part one of the wait
+		bne		WAIT3
+WAIT4:	dey					; Y was zero on entry - 256 x 5uS delay
+		bne		WAIT4
+		ldy		TY			; retrieve Y
+		rts
+
+GETBYTE:ldy		#$08		; GET BYTE from tape - load counter
+START:	bit		PIA			; wait for 1 -> 0 transition - a start bit
+		bmi		START
+		jsr		HAFWAIT		; wait half the time, so sampling in the centre
+INPUT:	jsr		WAIT		; full wait time between samples
+		asl		PIA			; get sample into carry
+		ror		A			; and auto A
+		dey
+		bne		INPUT		; keep going
+		beq		WAIT		; use wait to get out onto the stop bit high
+RESET:	ldx		#$FF		; MAIN PROGRAM
+		txs					; initialise stack
+		stx		BDDR		; and B data direction register
+		stx		REPEAT		; multi-scan display mode
+INIT:	ldy		#$80		; the familiar dot on the display
+		ldx		#$09		; all eight displays and initialise exec
+ROUND:	sty		REPEAT,X	; Y used for amusement
+		dex
+		bne		ROUND		; X zero on exit, so up & down immediately valid
+;
+RESTART:jsr		DISPLAY		; mark return to monitor point display & get key
+REENTER:bcc		INIT		; hex key gets the dots back
+SEARCH:	and		#$07		; remove any stray bits (effectively subtract 10)
+		cmp		#$04
+		bcc		FETADD		; keys of value less than 4 need an address
+		beq		LOAD		; key 4 is the load key
+TEST6:	cmp		#$06
+		beq		UP			; key 6 is up
+		bcs		DOWN		; & key 7 is down
+RETURN2:lda		R0			; must be key 5 - gat A back
+		ldx		R1			; get X back
+		ldy		R2			; get Y back
+		rti					; get P & PC back & continue from where you were
+UP:		inc		0,X			; 16-bit indexed increment
+		bne		ENTERM
+		inc		1,X
+		bcs		ENTERM		; a branch always: the carry was set by the FF11 compare
+DOWN:	lda		0,X			; 16-bit indexed decrement
+		bne		NODEC
+		dec		1,X
+NODEC:	dec		0,X
+ENTERM:	jsr		QHEXTD1		; now display the value
+		jmp		MODIFY		; and get into the modify section
+FETADD:	sty		D+6			; clear displays 6
+		sty		D+7			; & 7 - Y was zero on exit from DISPLAY
+		asl		A			; double A
+		tax					; the zero page addresses MAP, GAP, PAP & FAP
+		eor		#$F7		; fix up digit 0 command symbol
+		sta		D
+		jsr		QDATFET		; fetch the address, into MAP, GAP, PAP OR FAP
+		cpx		#$02		; check X to find out which command we're doing
+		bcs		N1			; must be 2,4 or 6 - as 0 is
+MODIFY:	jsr		MHEXTD		; display the memory
+		jsr		DISPLAY		; and get key
+		bcs		SEARCH		; if not hex do over
+		lda		(0, X)		; hex so get old info
+		asl		A
+		asl		A
+		asl		A
+		asl		A			; moved along
+		ora		KEY			; and put in new info
+		sta		(0, X)		; and put it back
+		jmp		MODIFY		; then keep doing it
+N1:		bne		N2			; must be 4 or 6 as 2 is ..
+GO:		jmp		(GAP)		; the very simple go
+N2:		cpx		#$04		; is it 4 or 6 ?
+		beq		POINT		; well it's not 4
+STORE:	ldx		#$08		; so it must be 6 - X now points to TAP
+		stx		D			; give prompt
+		jsr		QDATFET		; and get 2nd store info
+		ldx		#$04		; loop count
+ADDRESS:lda		$05,X		; send addresses to tape
+		jsr		PUTBYTE
+		dex
+		bne		ADDRESS		; X neatly zeroed on exit
+DATAS:	lda		($06,X)		; data send - get info from memory
+		jsr		PUTBYTE		; and send it to tape
+		jsr		COM16		; see if printed
+		bne		DATAS		; no
+		beq		WAYOUT		; yes
+LOAD:	ldx		#$04
+ADDRSL:	jsr		GETBYTE		; rescue addresses from tape
+		sta		$05,X		; put them in FAP & TAP, though it could be elsewhere
+		dex
+		bne		ADDRSL		; X neatly served again
+DATAL:	jsr		GETBYTE		; get data from tape
+		sta		($06,X)		; and store it in memory
+		sta		PIB			; and on the display so it can be seen
+		jsr		COM16		; see if finished
+		bne		DATAL		; no
+		beq		WAYOUT		; yes
+POINT:	lda		(0,X)		; set/clear breakpoint - get data from addressed memory
+		beq		SET			; if zero breakpoint has already been set = must clear it
+		sta		P			; not zero so save the information
+		lda		#$00		; and put in a breakpoint
+		beq		OUT
+SET:	lda		P			; was set so get old information back
+OUT:	sta		($00,X)		; insert breakpoint or old information
+		jsr		MHEXTD		; now read it out again to reveal ROM
+WAYOUT:	jmp		RESTART		; go back & do it all over again
+NMI:	jmp		(USERNMI)	; indirection on NMI
+IRQ:	jmp		(USERIRQ)	; indirection on IRQ
+BREAK:	sta		R0			; when the IRQ/BRK vector points here then display everything
+							; save A
+		stx		R1			; save X
+		sty		R2			; save Y
+		pla					; get P off stack
+		pha					; put it back for future use
+		sta		R3			; store Q in register 3
+		ldx		#R3			; set X to point at registers 3 -> 0 for QUAD
+		lda		#$FF		; kill possibility of displaybeing on single scan
+		sta		REPEAT
+		jsr		QUAD		; use QUAD to write out A, X, Y and P
+		tsx					; get stack pointer
+		stx		R7
+		iny					; Y zero since QUAD ended with display so this forms 01
+		sty		R6
+		cld					; clear decimal mode for binary subtract - doesn't affect user since P is stacked
+		lda		STACK+2,X	; get PCL off stack
+		sec
+		sbc		RECAL		; correct it by amount in RECAL
+		sta		STACK+2,X	; put it back on stack
+		sta		R5			; and store it for QUAD
+		lda		STACK+3,X	; PCH off stack
+		sbc		#$00		; rest of two byte subtraction
+		sta		STACK+3,X	; put it back on stack
+		sta		R4			; and store it for QUAD
+		ldx		#R7			; point X at these registers - QUAD will destroy them
+		jsr		QUAD		; QUAD writes out PC and SP
+		jmp		REENTER		; and the whole thing start over again
+FONT:	.byte	$3F,$06,$5B,$4F	; '0'-'3'
+		.byte	$66,$6D,$7D,$07	; '4'-'7
+		.byte	$7F,$6F,$77,$7C	; '8','9','A','b'
+		.byte	$58,$5E,$79,$71	; 'c','d','E','F'
+NMIVEC:	.word	NMI			; point to the added indirection
+RSTVEC:	.word	RESET		; point to the RESET entry point
+IRQVEC:	.word	IRQ			; point to the added indirection
